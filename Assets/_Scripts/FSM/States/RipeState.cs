@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Farm._Scripts;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ namespace Farm.States
         public void Enter()
         {
             Debug.Log($"Enter {GetType().Name}");
-            _context.transform.localScale = Vector3.one;
+            _context.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
         }
 
         public void Update()
