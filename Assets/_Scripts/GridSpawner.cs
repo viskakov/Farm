@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace Farm._Scripts
 {
-    public class GridSpawner : MonoBehaviour
+    public sealed class GridSpawner : MonoBehaviour
     {
-        [SerializeField] private GameObject _gridPrefab;
+        [SerializeField] private Cell _cellPrefab;
         [SerializeField] private int _width;
         [SerializeField] private int _height;
 
@@ -20,8 +20,8 @@ namespace Farm._Scripts
             {
                 for (var j = 0; j < _height; j++)
                 {
-                    var instance = Instantiate(_gridPrefab, new Vector3(i, 0f, j), _gridPrefab.transform.rotation, transform);
-                    instance.name = $"Grid {counter}";
+                    var instance = Instantiate(_cellPrefab, new Vector3(i, 0f, j), _cellPrefab.transform.rotation, transform);
+                    instance.name = $"Cell_{counter}";
                     counter++;
                 }
             }

@@ -406,9 +406,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _gameObjects:
-  - {fileID: 6443223729619670490, guid: 56642dae072364d5cb8b01f540cd7c28, type: 3}
-  - {fileID: 4321349658845122858, guid: 3dabbaa79450b40ac90c335af9a254a1, type: 3}
-  - {fileID: 5591287624293494056, guid: 246c3253c846c4c16a75a3774e285e1c, type: 3}
+  - {fileID: 6173172890858451521, guid: 56642dae072364d5cb8b01f540cd7c28, type: 3}
+  - {fileID: 3979472670925915839, guid: 3dabbaa79450b40ac90c335af9a254a1, type: 3}
+  - {fileID: 4708891271364698870, guid: 246c3253c846c4c16a75a3774e285e1c, type: 3}
 --- !u!4 &919936420
 Transform:
   m_ObjectHideFlags: 0
@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ab85d54bea4cccae2653503cda1321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gridPrefab: {fileID: 7607241553274468724, guid: 214fcb51d83224ca088216af04614833, type: 3}
+  _cellPrefab: {fileID: 8876867882564724827, guid: 214fcb51d83224ca088216af04614833, type: 3}
   _width: 3
   _height: 3
 --- !u!4 &1138488339

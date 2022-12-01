@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 7495613836734880063}
   - component: {fileID: 4808799826521905038}
   - component: {fileID: 8650959599180753001}
+  - component: {fileID: 8876867882564724827}
   m_Layer: 3
-  m_Name: Grid
+  m_Name: Cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,3 +98,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0000002, z: 6.123235e-17}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8876867882564724827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7607241553274468724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d910f54cf414226be7edd2646e5ef32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
