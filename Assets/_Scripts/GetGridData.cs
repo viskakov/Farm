@@ -5,7 +5,7 @@ namespace Farm._Scripts
     public sealed class GetGridData : MonoBehaviour
     {
         [SerializeField] private LayerMask _gridLayerMask;
-        [SerializeField] private Context[] _gameObjects;
+        [SerializeField] private Food[] _foods;
 
         private Camera _mainCamera;
 
@@ -25,10 +25,10 @@ namespace Farm._Scripts
             if (Physics.Raycast(ray, out var hitData,Mathf.Infinity, _gridLayerMask))
             {
                 var cell = hitData.transform.GetComponent<Cell>();
-                if (cell != null && cell.IsFree)
+                if (cell & cell.IsFree)
                 {
-                    var randomIndex = Random.Range(0, _gameObjects.Length);
-                    cell.Plant(_gameObjects[randomIndex]);
+                    var randomIndex = Random.Range(0, _foods.Length);
+                    cell.Plant(_foods[randomIndex]);
                 }
             }
         }

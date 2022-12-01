@@ -405,7 +405,7 @@ MonoBehaviour:
   _gridLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  _gameObjects:
+  _foods:
   - {fileID: 6173172890858451521, guid: 56642dae072364d5cb8b01f540cd7c28, type: 3}
   - {fileID: 3979472670925915839, guid: 3dabbaa79450b40ac90c335af9a254a1, type: 3}
   - {fileID: 4708891271364698870, guid: 246c3253c846c4c16a75a3774e285e1c, type: 3}

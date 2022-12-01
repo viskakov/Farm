@@ -23,7 +23,7 @@ namespace Farm._Scripts
             _stateMachine.ChangeState(state);
         }
 
-        public void Plant(Context food)
+        public void Plant(Food food)
         {
             Instantiate(food, transform.position, Quaternion.identity, transform);
             ChangeState(_busyState);
