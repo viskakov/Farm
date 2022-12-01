@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Farm._Scripts
 {
-    public class Context : MonoBehaviour, IContext
+    public class Context : MonoBehaviour
     {
         [SerializeField] private ItemToGrowData _itemToGrowData;
 

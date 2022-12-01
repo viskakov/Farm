@@ -17,7 +17,7 @@ namespace Farm.States
 
         public void Enter()
         {
-            Debug.Log($"Enter {GetType().Name}");
+            RandomRotation();
             _context.transform.localScale = _startScale;
             _timer = _context.ItemToGrowData.GrowDuration;
         }
@@ -33,13 +33,18 @@ namespace Farm.States
             {
                 _context.ChangeState(_context.RipeState);
             }
-
-            Debug.Log($"Update {GetType().Name}");
         }
 
         public void Exit()
         {
-            Debug.Log($"Exit {GetType().Name}");
+        }
+
+        private void RandomRotation()
+        {
+            var randomRotation = Random.rotationUniform.eulerAngles.y;
+            var rotationEulerAngles = _context.transform.rotation.eulerAngles;
+            rotationEulerAngles.y = randomRotation;
+            _context.transform.rotation = Quaternion.Euler(rotationEulerAngles);
         }
     }
 }

@@ -15,18 +15,15 @@ namespace Farm.States
 
         public void Enter()
         {
-            Debug.Log($"Enter {GetType().Name}");
             _context.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
         }
 
         public void Update()
         {
-            Debug.Log($"Update {GetType().Name}");
         }
 
         public void Exit()
         {
-            Debug.Log($"Exit {GetType().Name}");
         }
     }
 }

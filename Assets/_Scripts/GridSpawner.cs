@@ -15,13 +15,12 @@ namespace Farm._Scripts
 
         private void CreateGrid()
         {
-            var parent = new GameObject("Grid").transform;
             var counter = 0;
             for (var i = 0; i < _width; i++)
             {
                 for (var j = 0; j < _height; j++)
                 {
-                    var instance = Instantiate(_gridPrefab, new Vector3(i, 0f, j), _gridPrefab.transform.rotation, parent);
+                    var instance = Instantiate(_gridPrefab, new Vector3(i, 0f, j), _gridPrefab.transform.rotation, transform);
                     instance.name = $"Grid {counter}";
                     counter++;
                 }
