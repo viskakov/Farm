@@ -23,9 +23,9 @@ namespace Farm._Scripts
             _stateMachine.ChangeState(state);
         }
 
-        public void Plant(Food food)
+        public void Plant(FoodLogic foodLogic)
         {
-            Instantiate(food, transform.position, Quaternion.identity, transform);
+            Instantiate(foodLogic, transform.position, Quaternion.identity, transform);
             ChangeState(_busyState);
         }
     }

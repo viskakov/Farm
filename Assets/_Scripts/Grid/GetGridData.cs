@@ -5,7 +5,7 @@ namespace Farm._Scripts
     public sealed class GetGridData : MonoBehaviour
     {
         [SerializeField] private LayerMask _gridLayerMask;
-        [SerializeField] private Food[] _foods;
+        [SerializeField] private FoodLogic[] _foods;
 
         private Camera _mainCamera;
 

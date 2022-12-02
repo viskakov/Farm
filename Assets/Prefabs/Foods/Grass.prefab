@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4769856497312998912}
   - component: {fileID: 6620782093520734758}
   m_Layer: 0
-  m_Name: GrassRoot
+  m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4662984049536284747}
-  - {fileID: 1357259162576166872}
+  - {fileID: 1264023045481825273}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafb3fccd18e4b62a846dcfd3503bed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemToGrowData: {fileID: 11400000, guid: fc81738ecafab45108e9daf45da3a096, type: 2}
-  _foodObject: {fileID: 5475796488835326705}
-  _growTimerView: {fileID: 4201518192131549229}
+  _foodData: {fileID: 11400000, guid: fc81738ecafab45108e9daf45da3a096, type: 2}
+  _foodModel: {fileID: 5475796488835326705}
+  _growTimerUI: {fileID: 4112218361028588556}
 --- !u!1 &5475796488835326705
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 8582142202231338990}
   - component: {fileID: 5835842223718253348}
   m_Layer: 0
-  m_Name: Grass
+  m_Name: GrassModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &8005773385775057637
+--- !u!1001 &7801776333843011268
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -141,7 +141,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7462753558894395413, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_Name
-      value: GrowTimerView
+      value: GrowTimerUI
       objectReference: {fileID: 0}
     - target: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_Pivot.x
@@ -229,15 +229,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
---- !u!224 &1357259162576166872 stripped
+--- !u!224 &1264023045481825273 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
-  m_PrefabInstance: {fileID: 8005773385775057637}
+  m_PrefabInstance: {fileID: 7801776333843011268}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4201518192131549229 stripped
+--- !u!114 &4112218361028588556 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6148806515218293448, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
-  m_PrefabInstance: {fileID: 8005773385775057637}
+  m_PrefabInstance: {fileID: 7801776333843011268}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

@@ -5,23 +5,23 @@ namespace Farm.States
 {
     public sealed class GrowState : IState
     {
-        private readonly Food _food;
+        private readonly FoodLogic _foodLogic;
         private float _timer;
         private Vector3 _startScale = Vector3.zero;
         private Vector3 _targetScale = Vector3.one;
 
-        public GrowState(Food food)
+        public GrowState(FoodLogic foodLogic)
         {
-            _food = food;
+            _foodLogic = foodLogic;
         }
 
         public void Enter()
         {
             RandomRotation();
-            _food.FoodObject.transform.localScale = _startScale;
-            _food.GrowTimerView.SetDuration(_food.ItemToGrowData.GrowDuration);
-            _food.GrowTimerView.Show();
-            _timer = _food.ItemToGrowData.GrowDuration;
+            _foodLogic.FoodModel.transform.localScale = _startScale;
+            _foodLogic.GrowTimerUI.SetDuration(_foodLogic.FoodData.GrowDuration);
+            _foodLogic.GrowTimerUI.Show();
+            _timer = _foodLogic.FoodData.GrowDuration;
         }
 
         public void Update()
@@ -29,25 +29,25 @@ namespace Farm.States
             if (_timer > Mathf.Epsilon)
             {
                 _timer -= Time.deltaTime;
-                _food.FoodObject.transform.localScale = Vector3.Lerp(_startScale, _targetScale, 1f - _timer / _food.ItemToGrowData.GrowDuration);
+                _foodLogic.FoodModel.transform.localScale = Vector3.Lerp(_startScale, _targetScale, 1f - _timer / _foodLogic.FoodData.GrowDuration);
             }
             else
             {
-                _food.ChangeState(_food.RipeState);
+                _foodLogic.ChangeState(_foodLogic.RipeState);
             }
         }
 
         public void Exit()
         {
-            _food.GrowTimerView.Hide();
+            _foodLogic.GrowTimerUI.Hide();
         }
 
         private void RandomRotation()
         {
             var randomRotation = Random.rotationUniform.eulerAngles.y;
-            var rotationEulerAngles = _food.FoodObject.transform.rotation.eulerAngles;
+            var rotationEulerAngles = _foodLogic.FoodModel.transform.rotation.eulerAngles;
             rotationEulerAngles.y = randomRotation;
-            _food.FoodObject.transform.rotation = Quaternion.Euler(rotationEulerAngles);
+            _foodLogic.FoodModel.transform.rotation = Quaternion.Euler(rotationEulerAngles);
         }
     }
 }

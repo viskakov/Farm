@@ -6,16 +6,16 @@ namespace Farm.States
 {
     public sealed class RipeState : IState
     {
-        private readonly Food _food;
+        private readonly FoodLogic _foodLogic;
 
-        public RipeState(Food food)
+        public RipeState(FoodLogic foodLogic)
         {
-            _food = food;
+            _foodLogic = foodLogic;
         }
 
         public void Enter()
         {
-            _food.FoodObject.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
+            _foodLogic.FoodModel.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
         }
 
         public void Update()

@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace Farm._Scripts
 {
-    public sealed class Food : MonoBehaviour
+    public sealed class FoodLogic : MonoBehaviour
     {
-        [SerializeField] private ItemToGrowData _itemToGrowData;
-        [SerializeField] private GameObject _foodObject;
-        [SerializeField] private GrowTimerView _growTimerView;
+        [SerializeField] private FoodData _foodData;
+        [SerializeField] private GameObject _foodModel;
+        [SerializeField] private GrowTimerUI _growTimerUI;
 
-        public ItemToGrowData ItemToGrowData => _itemToGrowData;
-        public GameObject FoodObject => _foodObject;
-        public GrowTimerView GrowTimerView => _growTimerView;
+        public FoodData FoodData => _foodData;
+        public GameObject FoodModel => _foodModel;
+        public GrowTimerUI GrowTimerUI => _growTimerUI;
         public IState RipeState;
         public IState GrowState;
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5789106206132502456}
   - component: {fileID: 1391416109576852499}
   m_Layer: 5
-  m_Name: ProgressBackground
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3106278699659262214}
   - component: {fileID: 3908895863137804439}
   m_Layer: 5
-  m_Name: ProgressCircle
+  m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 3812691016623913189}
   - component: {fileID: 6148806515218293448}
   m_Layer: 5
-  m_Name: GrowTimerView
+  m_Name: GrowTimerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -374,5 +374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be969397ee2f4f549f9a344b74937f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _background: {fileID: 2635182034169561118}
+  _progressBar: {fileID: 3908895863137804439}
   _timerLabel: {fileID: 6353835492023747686}
-  _progressCircle: {fileID: 3908895863137804439}

@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Farm._Scripts.Items
 {
-    [CreateAssetMenu(menuName = "Farm/NewItemToGrow")]
-    public class ItemToGrowData : ScriptableObject
+    [CreateAssetMenu(menuName = "Farm/NewFood")]
+    public class FoodData : ScriptableObject
     {
         public string Name;
         public Sprite Icon;

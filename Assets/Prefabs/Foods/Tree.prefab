@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3168617671916494033
+--- !u!1 &731034589497863406
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2356192191705761387}
-  - component: {fileID: 1665553158101060046}
-  - component: {fileID: 3529076685715815684}
+  - component: {fileID: 103293321828070996}
+  - component: {fileID: 3945473437034904049}
+  - component: {fileID: 1235627208259964219}
   m_Layer: 0
-  m_Name: Carrot
+  m_Name: TreeModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2356192191705761387
+--- !u!4 &103293321828070996
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168617671916494033}
+  m_GameObject: {fileID: 731034589497863406}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8951133124507571323}
+  m_Father: {fileID: 4048824201541517017}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1665553158101060046
+--- !u!33 &3945473437034904049
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168617671916494033}
-  m_Mesh: {fileID: -5685869658508000680, guid: 2e373327bb4da4768a59d685eae1ec18, type: 3}
---- !u!23 &3529076685715815684
+  m_GameObject: {fileID: 731034589497863406}
+  m_Mesh: {fileID: -7776966612724735360, guid: 92ddb387c35684e3aa0fb2f909a88c09, type: 3}
+--- !u!23 &1235627208259964219
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168617671916494033}
+  m_GameObject: {fileID: 731034589497863406}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,8 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9117483709511198939, guid: 2e373327bb4da4768a59d685eae1ec18, type: 3}
-  - {fileID: 5669188097017666483, guid: 2e373327bb4da4768a59d685eae1ec18, type: 3}
+  - {fileID: -436311623246891856, guid: 92ddb387c35684e3aa0fb2f909a88c09, type: 3}
+  - {fileID: -8852278937947287675, guid: 92ddb387c35684e3aa0fb2f909a88c09, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &8082077509353358842
+--- !u!1 &7580176650689653442
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,57 +92,57 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8951133124507571323}
-  - component: {fileID: 3380989157037939765}
+  - component: {fileID: 4048824201541517017}
+  - component: {fileID: 4829255179146043210}
   m_Layer: 0
-  m_Name: CarrotRoot
+  m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8951133124507571323
+--- !u!4 &4048824201541517017
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8082077509353358842}
+  m_GameObject: {fileID: 7580176650689653442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2356192191705761387}
-  - {fileID: 2605575341409468740}
+  - {fileID: 103293321828070996}
+  - {fileID: 7810833238143007041}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3380989157037939765
+--- !u!114 &4829255179146043210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8082077509353358842}
+  m_GameObject: {fileID: 7580176650689653442}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fafb3fccd18e4b62a846dcfd3503bed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemToGrowData: {fileID: 11400000, guid: cbc9a403847e54048b94673f422f29e3, type: 2}
-  _foodObject: {fileID: 3168617671916494033}
-  _growTimerView: {fileID: 915324168370796209}
---- !u!1001 &6478164773386294393
+  _foodData: {fileID: 11400000, guid: 9ac318be7250d4841b82c817d56f895e, type: 2}
+  _foodModel: {fileID: 731034589497863406}
+  _growTimerUI: {fileID: 4971580358580194996}
+--- !u!1001 &1272947546004319356
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8951133124507571323}
+    m_TransformParent: {fileID: 4048824201541517017}
     m_Modifications:
     - target: {fileID: 7462753558894395413, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_Name
-      value: GrowTimerView
+      value: GrowTimerUI
       objectReference: {fileID: 0}
     - target: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_Pivot.x
@@ -230,10 +230,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
---- !u!114 &915324168370796209 stripped
+--- !u!114 &4971580358580194996 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6148806515218293448, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
-  m_PrefabInstance: {fileID: 6478164773386294393}
+  m_PrefabInstance: {fileID: 1272947546004319356}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be969397ee2f4f549f9a344b74937f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &2605575341409468740 stripped
+--- !u!224 &7810833238143007041 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
-  m_PrefabInstance: {fileID: 6478164773386294393}
+  m_PrefabInstance: {fileID: 1272947546004319356}
   m_PrefabAsset: {fileID: 0}
