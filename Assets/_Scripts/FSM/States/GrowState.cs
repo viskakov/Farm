@@ -19,8 +19,8 @@ namespace Farm.States
         {
             RandomRotation();
             _food.FoodObject.transform.localScale = _startScale;
-            _food.FoodTimerView.SetDuration(_food.ItemToGrowData.GrowDuration);
-            _food.FoodTimerView.Show();
+            _food.GrowTimerView.SetDuration(_food.ItemToGrowData.GrowDuration);
+            _food.GrowTimerView.Show();
             _timer = _food.ItemToGrowData.GrowDuration;
         }
 
@@ -39,7 +39,7 @@ namespace Farm.States
 
         public void Exit()
         {
-            _food.FoodTimerView.Hide();
+            _food.GrowTimerView.Hide();
         }
 
         private void RandomRotation()

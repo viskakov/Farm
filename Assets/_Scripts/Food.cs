@@ -8,11 +8,11 @@ namespace Farm._Scripts
     {
         [SerializeField] private ItemToGrowData _itemToGrowData;
         [SerializeField] private GameObject _foodObject;
-        [SerializeField] private FoodTimerView _foodTimerView;
+        [SerializeField] private GrowTimerView _growTimerView;
 
         public ItemToGrowData ItemToGrowData => _itemToGrowData;
         public GameObject FoodObject => _foodObject;
-        public FoodTimerView FoodTimerView => _foodTimerView;
+        public GrowTimerView GrowTimerView => _growTimerView;
         public IState RipeState;
         public IState GrowState;
 

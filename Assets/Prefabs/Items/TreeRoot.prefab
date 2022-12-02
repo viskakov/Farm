@@ -114,7 +114,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 103293321828070996}
-  - {fileID: 4209726197345080484}
+  - {fileID: 931739812638846370}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -132,8 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemToGrowData: {fileID: 11400000, guid: 9ac318be7250d4841b82c817d56f895e, type: 2}
   _foodObject: {fileID: 731034589497863406}
-  _foodTimerView: {fileID: 1364816227372917585}
---- !u!1001 &5162321244392112537
+  _growTimerView: {fileID: 2627017918474738263}
+--- !u!1001 &8152069558815193247
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -142,7 +142,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7462753558894395413, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_Name
-      value: TimerCanvas
+      value: GrowTimerView
       objectReference: {fileID: 0}
     - target: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_Pivot.x
@@ -174,11 +174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 110
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_LocalPosition.x
@@ -230,10 +230,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
---- !u!114 &1364816227372917585 stripped
+--- !u!224 &931739812638846370 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
+  m_PrefabInstance: {fileID: 8152069558815193247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2627017918474738263 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6148806515218293448, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
-  m_PrefabInstance: {fileID: 5162321244392112537}
+  m_PrefabInstance: {fileID: 8152069558815193247}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -241,8 +246,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be969397ee2f4f549f9a344b74937f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &4209726197345080484 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
-  m_PrefabInstance: {fileID: 5162321244392112537}
-  m_PrefabAsset: {fileID: 0}

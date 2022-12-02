@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Farm._Scripts
 {
-    public class FoodTimerView : MonoBehaviour
+    public class GrowTimerView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _timerLabel;
         [SerializeField] private Image _progressCircle;

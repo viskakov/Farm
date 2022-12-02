@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4662984049536284747}
-  - {fileID: 8871591407044831017}
+  - {fileID: 1357259162576166872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemToGrowData: {fileID: 11400000, guid: fc81738ecafab45108e9daf45da3a096, type: 2}
   _foodObject: {fileID: 5475796488835326705}
-  _foodTimerView: {fileID: 6018225192000032988}
+  _growTimerView: {fileID: 4201518192131549229}
 --- !u!1 &5475796488835326705
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &491443351062163988
+--- !u!1001 &8005773385775057637
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -141,7 +141,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7462753558894395413, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_Name
-      value: TimerCanvas
+      value: GrowTimerView
       objectReference: {fileID: 0}
     - target: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_Pivot.x
@@ -173,11 +173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 110
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
       propertyPath: m_LocalPosition.x
@@ -229,10 +229,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
---- !u!114 &6018225192000032988 stripped
+--- !u!224 &1357259162576166872 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
+  m_PrefabInstance: {fileID: 8005773385775057637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4201518192131549229 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6148806515218293448, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
-  m_PrefabInstance: {fileID: 491443351062163988}
+  m_PrefabInstance: {fileID: 8005773385775057637}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -240,8 +245,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be969397ee2f4f549f9a344b74937f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &8871591407044831017 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9065689417365656893, guid: e670d6a560b0849bfacefb2e3be93847, type: 3}
-  m_PrefabInstance: {fileID: 491443351062163988}
-  m_PrefabAsset: {fileID: 0}
