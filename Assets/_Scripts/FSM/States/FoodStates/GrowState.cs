@@ -1,4 +1,5 @@
 using Farm._Scripts;
+using Farm._Scripts.Items;
 using UnityEngine;
 
 namespace Farm.States
@@ -6,22 +7,27 @@ namespace Farm.States
     public sealed class GrowState : IState
     {
         private readonly FoodLogic _foodLogic;
-        private float _timer;
-        private Vector3 _startScale = Vector3.zero;
-        private Vector3 _targetScale = Vector3.one;
+        private readonly FoodData _foodData;
+        private readonly GameObject _foodModel;
+        private readonly GrowTimerUI _growTimerUI;
 
-        public GrowState(FoodLogic foodLogic)
+        private float _timer;
+
+        public GrowState(FoodLogic foodLogic, FoodData foodData, GameObject foodModel, GrowTimerUI growTimerUI)
         {
             _foodLogic = foodLogic;
+            _foodData = foodData;
+            _foodModel = foodModel;
+            _growTimerUI = growTimerUI;
         }
 
         public void Enter()
         {
-            RandomRotation();
-            _foodLogic.FoodModel.transform.localScale = _startScale;
-            _foodLogic.GrowTimerUI.SetDuration(_foodLogic.FoodData.GrowDuration);
-            _foodLogic.GrowTimerUI.Show();
-            _timer = _foodLogic.FoodData.GrowDuration;
+            _timer = _foodData.GrowDuration;
+            _growTimerUI.SetDuration(_timer);
+            _growTimerUI.Show();
+            _foodModel.transform.localScale = Vector3.zero;
+            RandomModelRotation();
         }
 
         public void Update()
@@ -29,7 +35,7 @@ namespace Farm.States
             if (_timer > Mathf.Epsilon)
             {
                 _timer -= Time.deltaTime;
-                _foodLogic.FoodModel.transform.localScale = Vector3.Lerp(_startScale, _targetScale, 1f - _timer / _foodLogic.FoodData.GrowDuration);
+                _foodModel.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, 1f - _timer / _foodData.GrowDuration);
             }
             else
             {
@@ -39,15 +45,15 @@ namespace Farm.States
 
         public void Exit()
         {
-            _foodLogic.GrowTimerUI.Hide();
+            _growTimerUI.Hide();
         }
 
-        private void RandomRotation()
+        private void RandomModelRotation()
         {
             var randomRotation = Random.rotationUniform.eulerAngles.y;
-            var rotationEulerAngles = _foodLogic.FoodModel.transform.rotation.eulerAngles;
+            var rotationEulerAngles = _foodModel.transform.rotation.eulerAngles;
             rotationEulerAngles.y = randomRotation;
-            _foodLogic.FoodModel.transform.rotation = Quaternion.Euler(rotationEulerAngles);
+            _foodModel.transform.rotation = Quaternion.Euler(rotationEulerAngles);
         }
     }
 }

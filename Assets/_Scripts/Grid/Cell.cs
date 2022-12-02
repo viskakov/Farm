@@ -25,8 +25,11 @@ namespace Farm._Scripts
 
         public void Plant(FoodLogic foodLogic)
         {
-            Instantiate(foodLogic, transform.position, Quaternion.identity, transform);
-            ChangeState(_busyState);
+            if (IsFree)
+            {
+                Instantiate(foodLogic, transform.position, Quaternion.identity, transform);
+                ChangeState(_busyState);
+            }
         }
     }
 }

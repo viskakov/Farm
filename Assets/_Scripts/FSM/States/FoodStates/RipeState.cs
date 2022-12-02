@@ -1,21 +1,21 @@
 using DG.Tweening;
-using Farm._Scripts;
 using UnityEngine;
 
 namespace Farm.States
 {
     public sealed class RipeState : IState
     {
-        private readonly FoodLogic _foodLogic;
+        private readonly GameObject _foodModel;
 
-        public RipeState(FoodLogic foodLogic)
+        public RipeState(GameObject foodModel)
         {
-            _foodLogic = foodLogic;
+            _foodModel = foodModel;
         }
 
         public void Enter()
         {
-            _foodLogic.FoodModel.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
+            _foodModel.transform
+                .DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
         }
 
         public void Update()
