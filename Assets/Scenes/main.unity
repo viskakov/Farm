@@ -407,8 +407,8 @@ MonoBehaviour:
     m_Bits: 8
   _foods:
   - {fileID: 3380989157037939765, guid: a901d05974ead434088bb0a2ed2c6326, type: 3}
-  - {fileID: 3979472670925915839, guid: 3dabbaa79450b40ac90c335af9a254a1, type: 3}
-  - {fileID: 4708891271364698870, guid: 246c3253c846c4c16a75a3774e285e1c, type: 3}
+  - {fileID: 6620782093520734758, guid: 3913a0402605347fbbe0e2cfff78d1cf, type: 3}
+  - {fileID: 4829255179146043210, guid: ade15db20b77e4a7385e502628f14f3d, type: 3}
 --- !u!4 &919936420
 Transform:
   m_ObjectHideFlags: 0
