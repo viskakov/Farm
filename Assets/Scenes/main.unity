@@ -365,14 +365,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829728727}
-  m_LocalRotation: {x: -0.05054576, y: 0.9059309, z: -0.4048993, w: -0.1130974}
-  m_LocalPosition: {x: 1.8937889, y: 2.1402225, z: 2.9845347}
+  m_LocalRotation: {x: 0, y: -0.92387956, z: 0.38268343, w: 0}
+  m_LocalPosition: {x: 1.25, y: 2.65, z: 3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -180, z: 0}
 --- !u!1 &919936418
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _foods:
-  - {fileID: 6173172890858451521, guid: 56642dae072364d5cb8b01f540cd7c28, type: 3}
+  - {fileID: 3380989157037939765, guid: a901d05974ead434088bb0a2ed2c6326, type: 3}
   - {fileID: 3979472670925915839, guid: 3dabbaa79450b40ac90c335af9a254a1, type: 3}
   - {fileID: 4708891271364698870, guid: 246c3253c846c4c16a75a3774e285e1c, type: 3}
 --- !u!4 &919936420

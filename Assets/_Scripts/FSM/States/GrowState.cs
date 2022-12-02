@@ -18,7 +18,9 @@ namespace Farm.States
         public void Enter()
         {
             RandomRotation();
-            _food.transform.localScale = _startScale;
+            _food.FoodObject.transform.localScale = _startScale;
+            _food.FoodTimerView.SetDuration(_food.ItemToGrowData.GrowDuration);
+            _food.FoodTimerView.Show();
             _timer = _food.ItemToGrowData.GrowDuration;
         }
 
@@ -27,7 +29,7 @@ namespace Farm.States
             if (_timer > Mathf.Epsilon)
             {
                 _timer -= Time.deltaTime;
-                _food.transform.localScale = Vector3.Lerp(_startScale, _targetScale, 1f - _timer / _food.ItemToGrowData.GrowDuration);
+                _food.FoodObject.transform.localScale = Vector3.Lerp(_startScale, _targetScale, 1f - _timer / _food.ItemToGrowData.GrowDuration);
             }
             else
             {
@@ -37,14 +39,15 @@ namespace Farm.States
 
         public void Exit()
         {
+            _food.FoodTimerView.Hide();
         }
 
         private void RandomRotation()
         {
             var randomRotation = Random.rotationUniform.eulerAngles.y;
-            var rotationEulerAngles = _food.transform.rotation.eulerAngles;
+            var rotationEulerAngles = _food.FoodObject.transform.rotation.eulerAngles;
             rotationEulerAngles.y = randomRotation;
-            _food.transform.rotation = Quaternion.Euler(rotationEulerAngles);
+            _food.FoodObject.transform.rotation = Quaternion.Euler(rotationEulerAngles);
         }
     }
 }

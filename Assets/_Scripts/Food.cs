@@ -7,8 +7,12 @@ namespace Farm._Scripts
     public sealed class Food : MonoBehaviour
     {
         [SerializeField] private ItemToGrowData _itemToGrowData;
+        [SerializeField] private GameObject _foodObject;
+        [SerializeField] private FoodTimerView _foodTimerView;
 
         public ItemToGrowData ItemToGrowData => _itemToGrowData;
+        public GameObject FoodObject => _foodObject;
+        public FoodTimerView FoodTimerView => _foodTimerView;
         public IState RipeState;
         public IState GrowState;
 

@@ -1,12 +1,9 @@
-using UnityEngine;
-
 namespace Farm.States
 {
-    public class BusyState : IState
+    public sealed class BusyState : IState
     {
         public void Enter()
         {
-            Debug.Log($"Enter {GetType().Name}");
         }
 
         public void Update()
@@ -15,7 +12,6 @@ namespace Farm.States
 
         public void Exit()
         {
-            Debug.Log($"Exit {GetType().Name}");
         }
     }
 }

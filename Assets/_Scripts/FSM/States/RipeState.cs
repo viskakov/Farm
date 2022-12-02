@@ -15,7 +15,7 @@ namespace Farm.States
 
         public void Enter()
         {
-            _food.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
+            _food.FoodObject.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
         }
 
         public void Update()
