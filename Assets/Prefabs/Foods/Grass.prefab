@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodData: {fileID: 11400000, guid: fc81738ecafab45108e9daf45da3a096, type: 2}
-  _foodModel: {fileID: 5475796488835326705}
+  _foodRender: {fileID: 5475796488835326705}
   _growTimerUI: {fileID: 4112218361028588556}
 --- !u!1 &5475796488835326705
 GameObject:
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 8582142202231338990}
   - component: {fileID: 5835842223718253348}
   m_Layer: 0
-  m_Name: GrassModel
+  m_Name: GrassRender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

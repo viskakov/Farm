@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1665553158101060046}
   - component: {fileID: 3529076685715815684}
   m_Layer: 0
-  m_Name: CarrotModel
+  m_Name: CarrotRender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodData: {fileID: 11400000, guid: cbc9a403847e54048b94673f422f29e3, type: 2}
-  _foodModel: {fileID: 3168617671916494033}
+  _foodRender: {fileID: 3168617671916494033}
   _growTimerUI: {fileID: 8042460964828832951}
 --- !u!1001 &4235773239149774463
 PrefabInstance:

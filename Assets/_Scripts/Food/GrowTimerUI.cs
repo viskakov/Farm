@@ -10,6 +10,7 @@ namespace Farm._Scripts
         [SerializeField] private Transform _background;
         [SerializeField] private Image _progressBar;
         [SerializeField] private TextMeshProUGUI _timerLabel;
+        [SerializeField] private Gradient _progressGradient;
 
         private float _duration;
         private float _timer;
@@ -20,6 +21,7 @@ namespace Farm._Scripts
             {
                 _timer -= Time.deltaTime;
                 _progressBar.fillAmount = _timer / _duration;
+                _progressBar.color = _progressGradient.Evaluate(_timer / _duration);
                 _timerLabel.SetText(_timer.ToString("0.0"));
             }
         }

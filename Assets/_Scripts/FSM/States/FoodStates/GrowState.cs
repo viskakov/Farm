@@ -8,16 +8,16 @@ namespace Farm.States
     {
         private readonly FoodLogic _foodLogic;
         private readonly FoodData _foodData;
-        private readonly GameObject _foodModel;
+        private readonly GameObject _foodRender;
         private readonly GrowTimerUI _growTimerUI;
 
         private float _timer;
 
-        public GrowState(FoodLogic foodLogic, FoodData foodData, GameObject foodModel, GrowTimerUI growTimerUI)
+        public GrowState(FoodLogic foodLogic, FoodData foodData, GameObject foodRender, GrowTimerUI growTimerUI)
         {
             _foodLogic = foodLogic;
             _foodData = foodData;
-            _foodModel = foodModel;
+            _foodRender = foodRender;
             _growTimerUI = growTimerUI;
         }
 
@@ -26,7 +26,7 @@ namespace Farm.States
             _timer = _foodData.GrowDuration;
             _growTimerUI.SetDuration(_timer);
             _growTimerUI.Show();
-            _foodModel.transform.localScale = Vector3.zero;
+            _foodRender.transform.localScale = Vector3.zero;
             RandomModelRotation();
         }
 
@@ -35,7 +35,7 @@ namespace Farm.States
             if (_timer > Mathf.Epsilon)
             {
                 _timer -= Time.deltaTime;
-                _foodModel.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, 1f - _timer / _foodData.GrowDuration);
+                _foodRender.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, 1f - _timer / _foodData.GrowDuration);
             }
             else
             {
@@ -51,9 +51,9 @@ namespace Farm.States
         private void RandomModelRotation()
         {
             var randomRotation = Random.rotationUniform.eulerAngles.y;
-            var rotationEulerAngles = _foodModel.transform.rotation.eulerAngles;
+            var rotationEulerAngles = _foodRender.transform.rotation.eulerAngles;
             rotationEulerAngles.y = randomRotation;
-            _foodModel.transform.rotation = Quaternion.Euler(rotationEulerAngles);
+            _foodRender.transform.rotation = Quaternion.Euler(rotationEulerAngles);
         }
     }
 }
