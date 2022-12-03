@@ -42,11 +42,18 @@ namespace Farm._Scripts
             var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hitData,Mathf.Infinity, _gridLayerMask))
             {
+                if (SelectedCell)
+                {
+                    SelectedCell.Unselect();
+                }
+
                 SelectedCell = hitData.transform.GetComponent<CellLogic>();
+                SelectedCell.Select();
                 _itemSelectorPanel.Show();
             }
             else
             {
+                SelectedCell.Unselect();
                 SelectedCell = null;
                 _itemSelectorPanel.Hide();
             }

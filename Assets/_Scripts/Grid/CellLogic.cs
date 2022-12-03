@@ -8,6 +8,7 @@ namespace Farm._Scripts
         private IState _freeState;
         private IState _plantedState;
         private StateMachine _stateMachine;
+        private MeshRenderer _meshRenderer;
 
         private bool IsFree => _stateMachine.CurrentState == _freeState;
 
@@ -16,6 +17,7 @@ namespace Farm._Scripts
             _freeState = new FreeState();
             _plantedState = new PlantedState();
             _stateMachine = new StateMachine(_freeState);
+            _meshRenderer = GetComponent<MeshRenderer>();
         }
 
         private void ChangeState(IState state)
@@ -32,6 +34,16 @@ namespace Farm._Scripts
 
             Instantiate(foodLogic, transform.position, Quaternion.identity, transform);
             ChangeState(_plantedState);
+        }
+
+        public void Select()
+        {
+            _meshRenderer.material.color = Color.green;
+        }
+
+        public void Unselect()
+        {
+            _meshRenderer.material.color = Color.white;
         }
     }
 }
