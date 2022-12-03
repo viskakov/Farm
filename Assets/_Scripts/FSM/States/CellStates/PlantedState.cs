@@ -1,6 +1,6 @@
 namespace Farm.States
 {
-    public sealed class BusyState : IState
+    public sealed class PlantedState : IState
     {
         public void Enter()
         {

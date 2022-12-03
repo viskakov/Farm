@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -20,9 +21,13 @@ namespace Farm._Scripts
             if (_timer > Mathf.Epsilon)
             {
                 _timer -= Time.deltaTime;
-                _progressBar.fillAmount = _timer / _duration;
-                _progressBar.color = _progressGradient.Evaluate(_timer / _duration);
-                _timerLabel.SetText(_timer.ToString("0.0"));
+
+                var normalizedTimer = _timer / _duration;
+                _progressBar.fillAmount = normalizedTimer;
+                _progressBar.color = _progressGradient.Evaluate(normalizedTimer);
+
+                var timeSpan = TimeSpan.FromSeconds(_timer);
+                _timerLabel.SetText(timeSpan.ToString("m':'ss"));
             }
         }
 

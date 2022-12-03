@@ -6,7 +6,7 @@ namespace Farm._Scripts
     public sealed class Cell : MonoBehaviour
     {
         private IState _freeState;
-        private IState _busyState;
+        private IState _plantedState;
         private StateMachine _stateMachine;
 
         public bool IsFree => _stateMachine.CurrentState == _freeState;
@@ -14,7 +14,7 @@ namespace Farm._Scripts
         private void Awake()
         {
             _freeState = new FreeState();
-            _busyState = new BusyState();
+            _plantedState = new PlantedState();
             _stateMachine = new StateMachine(_freeState);
         }
 
@@ -28,7 +28,7 @@ namespace Farm._Scripts
             if (IsFree)
             {
                 Instantiate(foodLogic, transform.position, Quaternion.identity, transform);
-                ChangeState(_busyState);
+                ChangeState(_plantedState);
             }
         }
     }

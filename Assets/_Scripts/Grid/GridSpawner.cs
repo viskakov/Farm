@@ -20,7 +20,8 @@ namespace Farm._Scripts
             {
                 for (var j = 0; j < _height; j++)
                 {
-                    var instance = Instantiate(_cellPrefab, transform.position + new Vector3(i, 0f, j), _cellPrefab.transform.rotation, transform);
+                    var instance = Instantiate(_cellPrefab, transform.position + new Vector3(i, 0f, j), 
+                        _cellPrefab.transform.rotation, transform);
                     instance.name = $"Cell_{counter}";
                     counter++;
                 }
