@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2687896ff17c495e825a9e83fa5d8d08, type: 3}
-  m_Name: Grass
+  m_Name: Carrot
   m_EditorClassIdentifier: 
-  Name: Grass
-  Icon: {fileID: 0}
-  GrowDuration: 15
+  Name: Carrot
+  Icon: {fileID: 21300000, guid: 7cc05d684411649038327975aef33f60, type: 3}
+  GrowDuration: 10

@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Farm._Scripts
 {
-    public sealed class Cell : MonoBehaviour
+    public sealed class CellLogic : MonoBehaviour
     {
         private IState _freeState;
         private IState _plantedState;
         private StateMachine _stateMachine;
 
-        public bool IsFree => _stateMachine.CurrentState == _freeState;
+        private bool IsFree => _stateMachine.CurrentState == _freeState;
 
         private void Awake()
         {
@@ -25,11 +25,13 @@ namespace Farm._Scripts
 
         public void Plant(FoodLogic foodLogic)
         {
-            if (IsFree)
+            if (!IsFree)
             {
-                Instantiate(foodLogic, transform.position, Quaternion.identity, transform);
-                ChangeState(_plantedState);
+                return;
             }
+
+            Instantiate(foodLogic, transform.position, Quaternion.identity, transform);
+            ChangeState(_plantedState);
         }
     }
 }
