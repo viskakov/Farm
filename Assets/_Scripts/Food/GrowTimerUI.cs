@@ -16,19 +16,35 @@ namespace Farm._Scripts
         private float _duration;
         private float _timer;
 
+        public void SetDuration(float duration)
+        {
+            _duration = duration;
+            _timer = duration;
+        }
+
         private void Update()
         {
             if (_timer > Mathf.Epsilon)
             {
                 _timer -= Time.deltaTime;
 
-                var normalizedTimer = _timer / _duration;
-                _progressBar.fillAmount = normalizedTimer;
-                _progressBar.color = _progressGradient.Evaluate(normalizedTimer);
-
-                var timeSpan = TimeSpan.FromSeconds(_timer);
-                _timerLabel.SetText(timeSpan.ToString("m':'ss"));
+                UpdateProgressBar();
+                UpdateTimer();
             }
+        }
+
+        private void UpdateProgressBar()
+        {
+            var normalizedTimer = _timer / _duration;
+            _progressBar.fillAmount = normalizedTimer;
+            _progressBar.color = _progressGradient.Evaluate(normalizedTimer);
+        }
+
+        private void UpdateTimer()
+        {
+            var correctedTimer = _timer + 1f;
+            var timeSpan = TimeSpan.FromSeconds(correctedTimer);
+            _timerLabel.SetText(timeSpan.ToString("m':'ss"));
         }
 
         public void Show()
@@ -44,12 +60,6 @@ namespace Farm._Scripts
             _background
                 .DOScale(Vector3.zero, 0.2f)
                 .SetEase(Ease.OutCubic);
-        }
-
-        public void SetDuration(float duration)
-        {
-            _duration = duration;
-            _timer = duration;
         }
     }
 }
