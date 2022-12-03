@@ -524,6 +524,7 @@ MonoBehaviour:
   _gridLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _itemSelectorPanel: {fileID: 1712159561}
 --- !u!4 &919936420
 Transform:
   m_ObjectHideFlags: 0

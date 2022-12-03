@@ -6,11 +6,24 @@ namespace Farm._Scripts
     public sealed class GetGridData : MonoBehaviour
     {
         [SerializeField] private LayerMask _gridLayerMask;
+        [SerializeField] private ItemSelectorPanel _itemSelectorPanel;
 
         private Camera _mainCamera;
 
+        public static GetGridData Instance;
+        public CellLogic SelectedCell { get; private set; }
+
         private void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
             _mainCamera = Camera.main;
         }
 
@@ -29,8 +42,13 @@ namespace Farm._Scripts
             var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hitData,Mathf.Infinity, _gridLayerMask))
             {
-                var cell = hitData.transform.GetComponent<CellLogic>();
-                Debug.Log(cell.name);
+                SelectedCell = hitData.transform.GetComponent<CellLogic>();
+                _itemSelectorPanel.Show();
+            }
+            else
+            {
+                SelectedCell = null;
+                _itemSelectorPanel.Hide();
             }
         }
     }

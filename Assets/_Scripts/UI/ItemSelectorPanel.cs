@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Farm._Scripts
 {
-    public class ItemSelectorPanel : MonoBehaviour
+    public sealed class ItemSelectorPanel : MonoBehaviour
     {
         [SerializeField] private ButtonView _buttonPrefab;
         [SerializeField] private Transform _parent;

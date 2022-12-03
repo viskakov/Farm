@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Farm._Scripts
 {
-    public class ButtonView : MonoBehaviour
+    public sealed class ButtonView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _name;
         [SerializeField] private TextMeshProUGUI _duration;
@@ -23,8 +23,11 @@ namespace Farm._Scripts
 
         public void OnButtonClicked()
         {
-            Instantiate(_foodData.FoodPrefab);
-            Debug.Log("Clicked on " + gameObject.name);
+            var cell = GetGridData.Instance.SelectedCell;
+            if (cell)
+            {
+                cell.Plant(_foodData.FoodPrefab);
+            }
         }
     }
 }
