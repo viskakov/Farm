@@ -161,7 +161,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 150}
+  m_SizeDelta: {x: 0, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &185152690
 MonoBehaviour:
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 418433627}
   - component: {fileID: 418433626}
   m_Layer: 5
-  m_Name: UICanvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,7 +524,6 @@ MonoBehaviour:
   _gridLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  _foodSelector: {fileID: 1712159559}
 --- !u!4 &919936420
 Transform:
   m_ObjectHideFlags: 0
@@ -967,7 +966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1712159560
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1001,7 +1000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d71b0a9ccfb462e9f904b9c677a36d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _foods: []
   _buttonPrefab: {fileID: 402349327488160666, guid: 363e5134eabe54ed08d7219f4d2e16c2, type: 3}
   _parent: {fileID: 185152689}
 --- !u!1 &2008779437

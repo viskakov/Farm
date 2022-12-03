@@ -7,18 +7,16 @@ namespace Farm._Scripts
 {
     public class ItemSelectorPanel : MonoBehaviour
     {
-        [SerializeField] private List<FoodData> _foods;
         [SerializeField] private ButtonView _buttonPrefab;
         [SerializeField] private Transform _parent;
+
+        private List<FoodData> _foods;
 
         private void Awake()
         {
             LoadFoodData();
-        }
-
-        private void Start()
-        {
             CreateButtons();
+            Hide();
         }
 
         private void LoadFoodData()
@@ -33,8 +31,19 @@ namespace Farm._Scripts
             for (var i = 0; i < count; i++)
             {
                 var instance = Instantiate(_buttonPrefab, Vector3.zero, Quaternion.identity, _parent);
+                instance.name = $"{_foods[i].Name} button";
                 instance.Init(_foods[i]);
             }
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

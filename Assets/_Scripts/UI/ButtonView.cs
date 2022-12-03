@@ -11,16 +11,20 @@ namespace Farm._Scripts
         [SerializeField] private TextMeshProUGUI _duration;
         [SerializeField] private Image _icon;
 
+        private FoodData _foodData;
+
         public void Init(FoodData foodData)
         {
+            _foodData = foodData;
             _name.SetText(foodData.Name);
             _duration.SetText(foodData.GrowDuration.ToString("0:00"));
             _icon.sprite = foodData.Icon;
         }
 
-        public void ClickTest()
+        public void OnButtonClicked()
         {
-            Debug.Log("ClickTest");
+            Instantiate(_foodData.FoodPrefab);
+            Debug.Log("Clicked on " + gameObject.name);
         }
     }
 }

@@ -6,10 +6,8 @@ namespace Farm._Scripts
     public sealed class GetGridData : MonoBehaviour
     {
         [SerializeField] private LayerMask _gridLayerMask;
-        [SerializeField] private GameObject _foodSelector;
 
         private Camera _mainCamera;
-        private CellLogic _selectedCell;
 
         private void Awake()
         {
@@ -32,32 +30,8 @@ namespace Farm._Scripts
             if (Physics.Raycast(ray, out var hitData,Mathf.Infinity, _gridLayerMask))
             {
                 var cell = hitData.transform.GetComponent<CellLogic>();
-                if (cell)
-                {
-                    _selectedCell = cell;
-                    _foodSelector.SetActive(true);
-                }
-                else
-                {
-                    _selectedCell = null;
-                    _foodSelector.SetActive(false);
-                }
+                Debug.Log(cell.name);
             }
-        }
-
-        public void Test1()
-        {
-            Debug.Log(_selectedCell.name);
-        }
-        
-        public void Test2()
-        {
-            Debug.Log("Test2");
-        }
-        
-        public void Test3()
-        {
-            Debug.Log("Test3");
         }
     }
 }

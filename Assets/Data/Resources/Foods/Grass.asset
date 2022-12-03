@@ -15,3 +15,4 @@ MonoBehaviour:
   Name: Grass
   Icon: {fileID: 21300000, guid: 348693b2797df49a9ab96c88d7bcab81, type: 3}
   GrowDuration: 15
+  FoodPrefab: {fileID: 6620782093520734758, guid: 3913a0402605347fbbe0e2cfff78d1cf, type: 3}

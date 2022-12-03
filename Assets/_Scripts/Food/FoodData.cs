@@ -8,5 +8,6 @@ namespace Farm._Scripts.Items
         public string Name;
         public Sprite Icon;
         public float GrowDuration;
+        public FoodLogic FoodPrefab;
     }
 }
