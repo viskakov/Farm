@@ -9,5 +9,11 @@ namespace Farm._Scripts.Items
         public Sprite Icon;
         public float GrowDuration;
         public FoodLogic FoodPrefab;
+        public int Experience;
+
+        public int GetExperience()
+        {
+            return (int) GrowDuration * Experience;
+        }
     }
 }
