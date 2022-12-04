@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 185152689}
   - component: {fileID: 185152693}
+  - component: {fileID: 185152694}
   - component: {fileID: 185152692}
   - component: {fileID: 185152691}
   - component: {fileID: 185152690}
@@ -241,6 +242,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185152688}
   m_CullTransparentMesh: 1
+--- !u!225 &185152694
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185152688}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &418433625
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +516,7 @@ GameObject:
   - component: {fileID: 919936420}
   - component: {fileID: 919936419}
   m_Layer: 0
-  m_Name: GetGridData
+  m_Name: CellSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,7 +537,6 @@ MonoBehaviour:
   _gridLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  _itemSelectorPanel: {fileID: 1712159561}
 --- !u!4 &919936420
 Transform:
   m_ObjectHideFlags: 0
@@ -962,7 +974,7 @@ GameObject:
   - component: {fileID: 1712159560}
   - component: {fileID: 1712159561}
   m_Layer: 5
-  m_Name: ItemSelectorPanel
+  m_Name: FoodRosterPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1002,6 +1014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonPrefab: {fileID: 402349327488160666, guid: 363e5134eabe54ed08d7219f4d2e16c2, type: 3}
+  _canvasGroup: {fileID: 185152694}
   _parent: {fileID: 185152689}
 --- !u!1 &2008779437
 GameObject:

@@ -5,24 +5,51 @@ using UnityEngine;
 
 namespace Farm._Scripts
 {
-    public sealed class ItemSelectorPanel : MonoBehaviour
+    public sealed class FoodRosterPanel : MonoBehaviour
     {
         [SerializeField] private ButtonView _buttonPrefab;
+        [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private Transform _parent;
 
         private List<FoodData> _foods;
+
+        public CellLogic CurrentCell { get; private set; }
 
         private void Awake()
         {
             LoadFoodData();
             CreateButtons();
-            Hide();
         }
 
         private void LoadFoodData()
         {
             _foods = new List<FoodData>();
             _foods = Resources.LoadAll<FoodData>("Foods").ToList();
+        }
+
+        private void Start()
+        {
+            CellSelector.OnCellClicked += OnCellClickedHandler;
+            Hide();
+        }
+
+        private void OnDestroy()
+        {
+            CellSelector.OnCellClicked -= OnCellClickedHandler;
+        }
+
+        private void OnCellClickedHandler(CellLogic cell)
+        {
+            if (cell)
+            {
+                CurrentCell = cell;
+                Show();
+            }
+            else
+            {
+                CurrentCell = null;
+                Hide();
+            }
         }
 
         private void CreateButtons()
@@ -32,18 +59,18 @@ namespace Farm._Scripts
             {
                 var instance = Instantiate(_buttonPrefab, Vector3.zero, Quaternion.identity, _parent);
                 instance.name = $"{_foods[i].Name} button";
-                instance.Init(_foods[i]);
+                instance.Init(this, _foods[i]);
             }
         }
 
-        public void Show()
+        private void Show()
         {
-            gameObject.SetActive(true);
+            _canvasGroup.alpha = 1f;
         }
 
-        public void Hide()
+        private void Hide()
         {
-            gameObject.SetActive(false);
+            _canvasGroup.alpha = 0f;
         }
     }
 }

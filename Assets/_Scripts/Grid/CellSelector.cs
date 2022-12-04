@@ -1,29 +1,20 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Farm._Scripts
 {
-    public sealed class GetGridData : MonoBehaviour
+    public sealed class CellSelector : MonoBehaviour
     {
         [SerializeField] private LayerMask _gridLayerMask;
-        [SerializeField] private ItemSelectorPanel _itemSelectorPanel;
 
         private Camera _mainCamera;
+        private CellLogic _cell;
 
-        public static GetGridData Instance;
-        public CellLogic SelectedCell { get; private set; }
+        public static Action<CellLogic> OnCellClicked;
 
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-
             _mainCamera = Camera.main;
         }
 
@@ -42,20 +33,19 @@ namespace Farm._Scripts
             var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hitData,Mathf.Infinity, _gridLayerMask))
             {
-                if (SelectedCell)
+                if (_cell)
                 {
-                    SelectedCell.Unselect();
+                    _cell.Unselect();
                 }
 
-                SelectedCell = hitData.transform.GetComponent<CellLogic>();
-                SelectedCell.Select();
-                _itemSelectorPanel.Show();
+                _cell = hitData.transform.GetComponent<CellLogic>();
+                _cell.Select();
+                OnCellClicked?.Invoke(_cell);
             }
             else
             {
-                SelectedCell.Unselect();
-                SelectedCell = null;
-                _itemSelectorPanel.Hide();
+                _cell.Unselect();
+                OnCellClicked?.Invoke(null);
             }
         }
     }

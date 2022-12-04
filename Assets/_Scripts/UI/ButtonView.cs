@@ -11,10 +11,12 @@ namespace Farm._Scripts
         [SerializeField] private TextMeshProUGUI _duration;
         [SerializeField] private Image _icon;
 
+        private FoodRosterPanel _foodRosterPanel;
         private FoodData _foodData;
-
-        public void Init(FoodData foodData)
+        
+        public void Init(FoodRosterPanel foodRosterPanel, FoodData foodData)
         {
+            _foodRosterPanel = foodRosterPanel;
             _foodData = foodData;
             _name.SetText(foodData.Name);
             _duration.SetText(foodData.GrowDuration.ToString("0:00"));
@@ -23,10 +25,9 @@ namespace Farm._Scripts
 
         public void OnButtonClicked()
         {
-            var cell = GetGridData.Instance.SelectedCell;
-            if (cell)
+            if (_foodRosterPanel.CurrentCell)
             {
-                cell.Plant(_foodData.FoodPrefab);
+                _foodRosterPanel.CurrentCell.Plant(_foodData.FoodPrefab);
             }
         }
     }
