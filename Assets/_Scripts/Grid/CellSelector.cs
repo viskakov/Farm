@@ -44,7 +44,11 @@ namespace Farm._Scripts
             }
             else
             {
-                _cell.Unselect();
+                if (_cell)
+                {
+                    _cell.Unselect();
+                }
+
                 OnCellClicked?.Invoke(null);
             }
         }
