@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tree
   m_EditorClassIdentifier: 
   Name: Tree
-  Icon: {fileID: 21300000, guid: 891a5fa72305449f78e777e3d04f5c46, type: 3}
+  Icon: {fileID: 21300000, guid: e13bb0b47ba624d2ab9cf91e9a088a76, type: 3}
   GrowDuration: 25
   FoodPrefab: {fileID: 4829255179146043210, guid: ade15db20b77e4a7385e502628f14f3d, type: 3}
   Experience: 20

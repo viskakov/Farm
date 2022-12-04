@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Carrot
   m_EditorClassIdentifier: 
   Name: Carrot
-  Icon: {fileID: 21300000, guid: 7cc05d684411649038327975aef33f60, type: 3}
+  Icon: {fileID: 21300000, guid: 92a5a9f4fa7ac4c0180b22c1fedb1a81, type: 3}
   GrowDuration: 10
   FoodPrefab: {fileID: 3380989157037939765, guid: a901d05974ead434088bb0a2ed2c6326, type: 3}
   Experience: 5

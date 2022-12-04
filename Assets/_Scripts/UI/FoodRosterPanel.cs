@@ -90,14 +90,14 @@ namespace Farm._Scripts
             void ScaleOut()
             {
                 transform
-                    .DOScale(Vector3.zero, 0.3f)
+                    .DOScale(Vector3.zero, 0.2f)
                     .SetEase(Ease.OutQuad);
             }
 
             void FadeOut()
             {
                 _canvasGroup
-                    .DOFade(0f, 0.3f)
+                    .DOFade(0f, 0.2f)
                     .SetEase(Ease.OutQuad);
             }
 

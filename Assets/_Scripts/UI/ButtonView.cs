@@ -19,7 +19,7 @@ namespace Farm._Scripts
             _foodRosterPanel = foodRosterPanel;
             _foodData = foodData;
             _name.SetText(foodData.Name);
-            _duration.SetText(foodData.GrowDuration.ToString("0:00"));
+            _duration.SetText($"{_foodData.GrowDuration} seconds");
             _icon.sprite = foodData.Icon;
         }
 
