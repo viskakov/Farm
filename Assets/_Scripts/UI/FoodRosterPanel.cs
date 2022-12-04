@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Farm._Scripts.Items;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ namespace Farm._Scripts
         private void Start()
         {
             CellSelector.OnCellClicked += OnCellClickedHandler;
-            Hide();
+            _canvasGroup.alpha = 0f;
         }
 
         private void OnDestroy()
@@ -65,12 +66,43 @@ namespace Farm._Scripts
 
         private void Show()
         {
-            _canvasGroup.alpha = 1f;
+            void ScaleIn()
+            {
+                transform.localScale = Vector3.zero;
+                transform
+                    .DOScale(Vector3.one, 0.3f)
+                    .SetEase(Ease.OutBack);
+            }
+
+            void FadeIn()
+            {
+                _canvasGroup
+                    .DOFade(1f, 0.3f)
+                    .SetEase(Ease.OutQuad);
+            }
+
+            ScaleIn();
+            FadeIn();
         }
 
-        private void Hide()
+        public void Hide()
         {
-            _canvasGroup.alpha = 0f;
+            void ScaleOut()
+            {
+                transform
+                    .DOScale(Vector3.zero, 0.3f)
+                    .SetEase(Ease.OutQuad);
+            }
+
+            void FadeOut()
+            {
+                _canvasGroup
+                    .DOFade(0f, 0.3f)
+                    .SetEase(Ease.OutQuad);
+            }
+
+            ScaleOut();
+            FadeOut();
         }
     }
 }

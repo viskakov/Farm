@@ -29,6 +29,8 @@ namespace Farm._Scripts
             {
                 _foodRosterPanel.CurrentCell.Plant(_foodData.FoodPrefab);
             }
+
+            _foodRosterPanel.Hide();
         }
     }
 }
