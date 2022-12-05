@@ -14,8 +14,8 @@ Shader "MyShaders/CharacterToonShader"
     {
         Tags
         {
-            "RenderType"="Transparent"
-            "Queue"="Transparent"
+            "RenderType"="Opaque"
+            "Queue"="Opaque"
             "LightMode"="ForwardBase"
             "PassFlags"="OnlyDirectional"
         }
