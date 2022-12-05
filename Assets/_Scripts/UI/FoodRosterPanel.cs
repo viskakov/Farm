@@ -14,7 +14,7 @@ namespace Farm._Scripts
 
         private List<FoodData> _foods;
 
-        public CellLogic CurrentCell { get; private set; }
+        public CellLogic SelectedCell { get; private set; }
 
         private void Awake()
         {
@@ -43,12 +43,12 @@ namespace Farm._Scripts
         {
             if (cell)
             {
-                CurrentCell = cell;
+                SelectedCell = cell;
                 Show();
             }
             else
             {
-                CurrentCell = null;
+                SelectedCell = null;
                 Hide();
             }
         }

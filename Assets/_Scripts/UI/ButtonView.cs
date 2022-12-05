@@ -1,3 +1,4 @@
+using Farm._Scripts.Commands;
 using Farm._Scripts.Items;
 using TMPro;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Farm._Scripts
 
         private FoodRosterPanel _foodRosterPanel;
         private FoodData _foodData;
-        
+
         public void Init(FoodRosterPanel foodRosterPanel, FoodData foodData)
         {
             _foodRosterPanel = foodRosterPanel;
@@ -25,10 +26,8 @@ namespace Farm._Scripts
 
         public void OnButtonClicked()
         {
-            if (_foodRosterPanel.CurrentCell)
-            {
-                _foodRosterPanel.CurrentCell.Plant(_foodData.FoodPrefab);
-            }
+            var plantCommand = new PlantCommand(_foodRosterPanel.SelectedCell, _foodData.FoodPrefab);
+            plantCommand.Execute();
 
             _foodRosterPanel.Hide();
         }
