@@ -41,6 +41,11 @@ namespace Farm._Scripts
 
         private void OnCellClickedHandler(CellLogic cell)
         {
+            if (cell == SelectedCell)
+            {
+                return;
+            }
+
             if (cell)
             {
                 SelectedCell = cell;
