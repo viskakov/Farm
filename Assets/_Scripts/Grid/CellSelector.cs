@@ -6,7 +6,7 @@ namespace Farm._Scripts
 {
     public sealed class CellSelector : MonoBehaviour
     {
-        [SerializeField] private LayerMask _gridLayerMask;
+        [SerializeField] private LayerMask _cellLayerMask;
 
         private Camera _mainCamera;
         private CellLogic _cell;
@@ -31,7 +31,7 @@ namespace Farm._Scripts
             }
 
             var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out var hitData,Mathf.Infinity, _gridLayerMask))
+            if (Physics.Raycast(ray, out var hitData,Mathf.Infinity, _cellLayerMask))
             {
                 var cell = hitData.transform.GetComponent<CellLogic>();
                 if (cell == _cell)
