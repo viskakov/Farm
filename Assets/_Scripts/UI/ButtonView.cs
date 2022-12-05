@@ -1,3 +1,4 @@
+using System;
 using Farm._Scripts.Commands;
 using Farm._Scripts.Items;
 using TMPro;
@@ -20,7 +21,8 @@ namespace Farm._Scripts
             _foodRosterPanel = foodRosterPanel;
             _foodData = foodData;
             _name.SetText(foodData.Name);
-            _duration.SetText($"Time {_foodData.GrowTime:0:00}");
+            var timeSpan = TimeSpan.FromSeconds(_foodData.GrowTime);
+            _duration.SetText($"Time {timeSpan:m':'ss}");
             _icon.sprite = foodData.Icon;
         }
 
