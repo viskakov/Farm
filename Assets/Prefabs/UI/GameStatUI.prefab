@@ -280,8 +280,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6530470000074384173}
   - component: {fileID: 6530470000074384172}
+  - component: {fileID: 901680837230888890}
   m_Layer: 5
-  m_Name: GameStats
+  m_Name: GameStatUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,3 +336,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &901680837230888890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6530470000074384174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99bf1674bd84b5085fbcd3608f994e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carrotLabel: {fileID: 6530469999954556533}
+  _expLabel: {fileID: 6530469998121760835}
