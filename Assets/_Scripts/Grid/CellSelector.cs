@@ -33,24 +33,30 @@ namespace Farm._Scripts
             var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hitData,Mathf.Infinity, _gridLayerMask))
             {
+                var cell = hitData.transform.GetComponent<CellLogic>();
+                if (cell == _cell)
+                {
+                    return;
+                }
+
                 if (_cell)
                 {
                     _cell.Unselect();
                 }
 
-                _cell = hitData.transform.GetComponent<CellLogic>();
+                _cell = cell;
                 _cell.Select();
-                OnCellClicked?.Invoke(_cell);
             }
             else
             {
                 if (_cell)
                 {
                     _cell.Unselect();
+                    _cell = null;
                 }
-
-                OnCellClicked?.Invoke(null);
             }
+
+            OnCellClicked?.Invoke(_cell);
         }
     }
 }
