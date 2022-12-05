@@ -1,3 +1,4 @@
+using Farm._Scripts.Helpers;
 using UnityEngine;
 
 namespace TreasureHunter
@@ -5,8 +6,6 @@ namespace TreasureHunter
     public sealed class PlayerAnimator : MonoBehaviour
     {
         private Animator _animator;
-
-        private static readonly int Walking = Animator.StringToHash("Walking");
 
         private void Awake()
         {
@@ -16,7 +15,12 @@ namespace TreasureHunter
         private void Update()
         {
             var isMoving = PlayerMovement.Instance.IsMoving;
-            _animator.SetBool(Walking, isMoving);
+            _animator.SetBool(AnimatorHash.Walking, isMoving);
+        }
+
+        public void PlayPlantAnimation()
+        {
+            _animator.SetTrigger(AnimatorHash.Plant);
         }
     }
 }

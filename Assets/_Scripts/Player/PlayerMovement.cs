@@ -10,7 +10,6 @@ namespace TreasureHunter
         [SerializeField] private float _speedRotation = 5f;
 
         private NavMeshAgent _agent;
-        private Vector3 _moveTarget;
         private Vector3 _direction;
         private Quaternion _lookRotation;
         private bool _isNeedToRotate;
@@ -48,10 +47,7 @@ namespace TreasureHunter
 
         public async Task MoveToAsync(Vector3 position)
         {
-            StopNavigation();
-
-            _moveTarget = position;
-            _direction = (_moveTarget.WithNewY(transform.position.y) - transform.position).normalized;
+            _direction = (position.WithNewY(transform.position.y) - transform.position).normalized;
             _lookRotation = Quaternion.LookRotation(_direction, Vector3.up);
             _isNeedToRotate = true;
 
@@ -62,11 +58,6 @@ namespace TreasureHunter
             
             while (_agent.remainingDistance > 1f)
                 await Task.Yield();
-        }
-
-        private void StopNavigation()
-        {
-            _agent.SetDestination(transform.position);
         }
     }
 }
