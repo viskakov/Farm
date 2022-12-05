@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Farm._Scripts.Helpers;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace TreasureHunter
         private bool _isNeedToRotate;
 
         public static PlayerMovement Instance;
+        public static Action OnReachPosition;
         public bool IsMoving => _agent.velocity.magnitude > 0f;
 
         private void Awake()
@@ -52,12 +54,12 @@ namespace TreasureHunter
             _isNeedToRotate = true;
 
             _agent.SetDestination(position);
+            while (_agent.pathPending || _agent.remainingDistance > Mathf.Epsilon)
+            {
+                await Task.Yield();
+            }
 
-            while (_agent.pathPending)
-                await Task.Yield();
-            
-            while (_agent.remainingDistance > 1f)
-                await Task.Yield();
+            OnReachPosition?.Invoke();
         }
     }
 }

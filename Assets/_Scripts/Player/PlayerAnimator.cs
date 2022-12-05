@@ -12,13 +12,23 @@ namespace TreasureHunter
             _animator = GetComponentInChildren<Animator>();
         }
 
+        private void OnEnable()
+        {
+            PlayerMovement.OnReachPosition += TriggerPlantAnimation;
+        }
+
+        private void OnDisable()
+        {
+            PlayerMovement.OnReachPosition -= TriggerPlantAnimation;
+        }
+
         private void Update()
         {
             var isMoving = PlayerMovement.Instance.IsMoving;
             _animator.SetBool(AnimatorHash.Walking, isMoving);
         }
 
-        public void PlayPlantAnimation()
+        private void TriggerPlantAnimation()
         {
             _animator.SetTrigger(AnimatorHash.Plant);
         }
