@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7786396129190044294, guid: 1a2e9b6c3eab0443d87596c1a1e965e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7786396129190044294, guid: 1a2e9b6c3eab0443d87596c1a1e965e0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 1074865062}
   - component: {fileID: 1074865061}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
