@@ -7,13 +7,13 @@ namespace Farm._Scripts.Items
     {
         public string Name;
         public Sprite Icon;
-        public float GrowDuration;
+        public float GrowTime;
         public FoodLogic FoodPrefab;
         public int Experience;
 
         public int GetExperience()
         {
-            return (int) GrowDuration * Experience;
+            return (int) GrowTime * Experience;
         }
     }
 }

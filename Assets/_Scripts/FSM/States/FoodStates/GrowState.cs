@@ -23,7 +23,7 @@ namespace Farm.States
 
         public void Enter()
         {
-            _timer = _foodData.GrowDuration;
+            _timer = _foodData.GrowTime;
             _growTimerUI.SetDuration(_timer);
             _growTimerUI.Show();
             _foodRender.transform.localScale = Vector3.zero;
@@ -35,7 +35,7 @@ namespace Farm.States
             if (_timer > Mathf.Epsilon)
             {
                 _timer -= Time.deltaTime;
-                _foodRender.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, 1f - _timer / _foodData.GrowDuration);
+                _foodRender.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, 1f - _timer / _foodData.GrowTime);
             }
             else
             {

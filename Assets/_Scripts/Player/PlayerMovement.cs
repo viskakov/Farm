@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace TreasureHunter
 {
-    public class PlayerClickMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float _speedRotation = 5f;
 
