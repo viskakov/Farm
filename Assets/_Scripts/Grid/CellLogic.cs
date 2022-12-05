@@ -38,7 +38,7 @@ namespace Farm._Scripts
 
         public void Select()
         {
-            _meshRenderer.material.color = Color.green;
+            _meshRenderer.material.color = new Color(0.7f, 0.7f, 0.7f, 1f);
         }
 
         public void Unselect()
