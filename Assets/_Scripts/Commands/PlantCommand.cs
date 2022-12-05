@@ -1,6 +1,8 @@
+using TreasureHunter;
+
 namespace Farm._Scripts.Commands
 {
-    public class PlantCommand : ICommand
+    public sealed class PlantCommand : ICommand
     {
         private readonly CellLogic _cell;
         private readonly FoodLogic _food;
@@ -11,8 +13,9 @@ namespace Farm._Scripts.Commands
             _food = food;
         }
 
-        public void Execute()
+        public async void Execute()
         {
+            await PlayerMovement.Instance.MoveToAsync(_cell.transform.position);
             _cell.Plant(_food);
         }
     }

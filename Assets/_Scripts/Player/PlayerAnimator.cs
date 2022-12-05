@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace TreasureHunter
 {
-    public class PlayerAnimator : MonoBehaviour
+    public sealed class PlayerAnimator : MonoBehaviour
     {
-        [SerializeField] private Animator _animator;
-        
-        private float _velocity;
+        private Animator _animator;
+
+        private static readonly int Walking = Animator.StringToHash("Walking");
 
         private void Awake()
         {
@@ -15,7 +15,8 @@ namespace TreasureHunter
 
         private void Update()
         {
-            _animator.SetBool("Walk", true);
+            var isMoving = PlayerMovement.Instance.IsMoving;
+            _animator.SetBool(Walking, isMoving);
         }
     }
 }
