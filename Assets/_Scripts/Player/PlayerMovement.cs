@@ -54,7 +54,7 @@ namespace TreasureHunter
 
         public void SetDestination(Vector3 destination, Action onCompleted)
         {
-            if (_stateMachine.CurrentState != IdleState)
+            if (_stateMachine.CurrentState == PlantState)
             {
                 return;
             }

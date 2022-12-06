@@ -25,8 +25,8 @@ namespace Farm.States.Player
 
         public void Update()
         {
-            var isMoving = _agent.velocity.magnitude > 0f;
-            _playerAnimator.PlayWalkAnimation(isMoving);
+            UpdateAnimator();
+            MoveTo();
 
             if (_agent.pathPending || _agent.remainingDistance > Mathf.Epsilon)
             {
@@ -38,6 +38,12 @@ namespace Farm.States.Player
 
         public void Exit()
         {
+        }
+
+        private void UpdateAnimator()
+        {
+            var isMoving = _agent.velocity.magnitude > 0f;
+            _playerAnimator.PlayWalkAnimation(isMoving);
         }
 
         private void MoveTo()
