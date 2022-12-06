@@ -1,36 +1,25 @@
 using Farm._Scripts.Helpers;
 using UnityEngine;
 
-namespace TreasureHunter
+namespace Farm._Scripts.Player
 {
     public sealed class PlayerAnimator : MonoBehaviour
     {
-        private Animator _animator;
+        public Animator Animator { get; private set; }
 
         private void Awake()
         {
-            _animator = GetComponentInChildren<Animator>();
+            Animator = GetComponentInChildren<Animator>();
         }
 
-        private void OnEnable()
+        public void PlayWalkAnimation(bool isMoving)
         {
-            PlayerMovement.OnReachPosition += TriggerPlantAnimation;
+            Animator.SetBool(AnimatorHash.Walking, isMoving);
         }
 
-        private void OnDisable()
+        public void PlayPlantAnimation()
         {
-            PlayerMovement.OnReachPosition -= TriggerPlantAnimation;
-        }
-
-        private void Update()
-        {
-            var isMoving = PlayerMovement.Instance.IsMoving;
-            _animator.SetBool(AnimatorHash.Walking, isMoving);
-        }
-
-        private void TriggerPlantAnimation()
-        {
-            _animator.SetTrigger(AnimatorHash.Plant);
+            Animator.SetTrigger(AnimatorHash.Plant);
         }
     }
 }

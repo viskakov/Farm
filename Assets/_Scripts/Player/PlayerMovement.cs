@@ -1,6 +1,7 @@
 using System;
-using System.Threading.Tasks;
-using Farm._Scripts.Helpers;
+using Farm;
+using Farm._Scripts.Player;
+using Farm.States.Player;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,13 +12,19 @@ namespace TreasureHunter
         [SerializeField] private float _speedRotation = 5f;
 
         private NavMeshAgent _agent;
+        private PlayerAnimator _playerAnimator;
         private Vector3 _direction;
         private Quaternion _lookRotation;
         private bool _isNeedToRotate;
+        private StateMachine _stateMachine;
+
+        private IState _walkState;
+        public IState IdleState { get; private set; }
+        public IState PlantState { get; private set; }
+        public Vector3 Destination { get; private set; }
+        public Action OnCompleted;
 
         public static PlayerMovement Instance;
-        public static Action OnReachPosition;
-        public bool IsMoving => _agent.velocity.magnitude > 0f;
 
         private void Awake()
         {
@@ -31,35 +38,36 @@ namespace TreasureHunter
             }
 
             _agent = GetComponent<NavMeshAgent>();
+            _playerAnimator = GetComponent<PlayerAnimator>();
+
+            _walkState = new WalkState(this, _playerAnimator, _agent);
+            IdleState = new IdleState();
+            PlantState = new PlantState(this, _playerAnimator);
+
+            _stateMachine = new StateMachine(IdleState);
+        }
+
+        public void ChangeState(IState state)
+        {
+            _stateMachine.ChangeState(state);
+        }
+
+        public void SetDestination(Vector3 destination, Action onCompleted)
+        {
+            if (_stateMachine.CurrentState != IdleState)
+            {
+                return;
+            }
+
+            Destination = destination;
+            OnCompleted = onCompleted;
+
+            ChangeState(_walkState);
         }
 
         private void Update()
         {
-            if (_isNeedToRotate)
-            {
-                transform.rotation =
-                    Quaternion.Slerp(transform.rotation, _lookRotation, _speedRotation * Time.deltaTime);
-            
-                if (Vector3.Dot(_direction, transform.forward) >= 0.97f)
-                {
-                    _isNeedToRotate = false;
-                }
-            }
-        }
-
-        public async Task MoveToAsync(Vector3 position)
-        {
-            _direction = (position.WithNewY(transform.position.y) - transform.position).normalized;
-            _lookRotation = Quaternion.LookRotation(_direction, Vector3.up);
-            _isNeedToRotate = true;
-
-            _agent.SetDestination(position);
-            while (_agent.pathPending || _agent.remainingDistance > Mathf.Epsilon)
-            {
-                await Task.Yield();
-            }
-
-            OnReachPosition?.Invoke();
+            _stateMachine.CurrentState.Update();
         }
     }
 }

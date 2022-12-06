@@ -13,10 +13,10 @@ namespace Farm._Scripts.Commands
             _food = food;
         }
 
-        public async void Execute()
+        public void Execute()
         {
-            await PlayerMovement.Instance.MoveToAsync(_cell.transform.position);
-            _cell.Plant(_food);
+            void PlantAction() => _cell.Plant(_food);
+            PlayerMovement.Instance.SetDestination(_cell.transform.position, PlantAction);
         }
     }
 }
