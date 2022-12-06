@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -20,13 +21,16 @@ namespace Farm._Scripts
         {
             _duration = duration;
             _timer = duration;
+            StartCoroutine(CountdownTimer());
         }
 
-        private void Update()
+        private IEnumerator CountdownTimer()
         {
-            if (_timer > Mathf.Epsilon)
+            while (_timer > Mathf.Epsilon)
             {
                 _timer -= Time.deltaTime;
+
+                yield return null;
 
                 UpdateProgressBar();
                 UpdateTimer();
