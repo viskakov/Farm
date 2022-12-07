@@ -25,6 +25,7 @@ namespace Farm.FSM.States.Player
         public void Update()
         {
             UpdateAnimator();
+            MoveTo();
 
             if (_agent.pathPending || _agent.remainingDistance > Mathf.Epsilon)
             {
