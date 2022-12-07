@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-using Farm._Scripts.Items;
+using Farm.Food;
+using Farm.Grid;
 using UnityEngine;
 
-namespace Farm._Scripts
+namespace Farm.UI
 {
     public sealed class FoodRosterPanel : MonoBehaviour
     {

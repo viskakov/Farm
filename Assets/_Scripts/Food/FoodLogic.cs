@@ -1,8 +1,9 @@
-using Farm._Scripts.Items;
-using Farm.States;
+using Farm.FSM;
+using Farm.FSM.States.FoodStates;
+using Farm.UI;
 using UnityEngine;
 
-namespace Farm._Scripts
+namespace Farm.Food
 {
     public sealed class FoodLogic : MonoBehaviour
     {

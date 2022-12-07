@@ -1,11 +1,11 @@
 using System;
-using Farm._Scripts.Commands;
-using Farm._Scripts.Items;
+using Farm.Commands;
+using Farm.Food;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Farm._Scripts
+namespace Farm.UI
 {
     public sealed class ButtonView : MonoBehaviour
     {

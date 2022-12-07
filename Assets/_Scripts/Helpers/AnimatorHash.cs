@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Farm._Scripts.Helpers
+namespace Farm.Helpers
 {
     public static class AnimatorHash
     {

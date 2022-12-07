@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Farm._Scripts
+namespace Farm.Grid
 {
     public sealed class CellSelector : MonoBehaviour
     {

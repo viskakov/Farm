@@ -1,11 +1,10 @@
 using System;
-using Farm;
-using Farm._Scripts.Player;
-using Farm.States.Player;
+using Farm.FSM;
+using Farm.FSM.States.Player;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace TreasureHunter
+namespace Farm.Player
 {
     public sealed class PlayerMovement : MonoBehaviour
     {

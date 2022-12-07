@@ -1,7 +1,7 @@
-using Farm._Scripts.Helpers;
+using Farm.Helpers;
 using UnityEngine;
 
-namespace Farm._Scripts.Player
+namespace Farm.Player
 {
     public sealed class PlayerAnimator : MonoBehaviour
     {

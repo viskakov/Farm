@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Farm._Scripts
+namespace Farm.UI
 {
     public class GrowTimerUI : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Farm._Scripts.Items
+namespace Farm.Food
 {
     [CreateAssetMenu(menuName = "Farm/NewFood")]
     public class FoodData : ScriptableObject

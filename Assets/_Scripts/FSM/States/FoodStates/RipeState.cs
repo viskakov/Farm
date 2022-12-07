@@ -1,8 +1,8 @@
 using DG.Tweening;
-using Farm._Scripts.Items;
+using Farm.Food;
 using UnityEngine;
 
-namespace Farm.States
+namespace Farm.FSM.States.FoodStates
 {
     public sealed class RipeState : IState
     {

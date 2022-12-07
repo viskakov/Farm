@@ -1,4 +1,4 @@
-namespace Farm
+namespace Farm.FSM
 {
     public interface IState
     {

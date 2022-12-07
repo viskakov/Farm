@@ -1,24 +1,25 @@
-using Farm;
-
-public sealed class StateMachine
+namespace Farm.FSM
 {
-    public IState CurrentState { get; private set; }
-
-    public StateMachine(IState state)
+    public sealed class StateMachine
     {
-        CurrentState = state;
-        CurrentState.Enter();
-    }
+        public IState CurrentState { get; private set; }
 
-    public void ChangeState(IState newState)
-    {
-        if (CurrentState == newState)
+        public StateMachine(IState state)
         {
-            return;
+            CurrentState = state;
+            CurrentState.Enter();
         }
 
-        CurrentState.Exit();
-        CurrentState = newState;
-        CurrentState.Enter();
+        public void ChangeState(IState newState)
+        {
+            if (CurrentState == newState)
+            {
+                return;
+            }
+
+            CurrentState.Exit();
+            CurrentState = newState;
+            CurrentState.Enter();
+        }
     }
 }

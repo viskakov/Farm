@@ -1,8 +1,7 @@
-using Farm._Scripts.Helpers;
-using Farm._Scripts.Player;
-using TreasureHunter;
+using Farm.Helpers;
+using Farm.Player;
 
-namespace Farm.States.Player
+namespace Farm.FSM.States.Player
 {
     public sealed class PlantState : IState
     {

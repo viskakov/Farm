@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Farm._Scripts
+namespace Farm.UI
 {
     public class GameStatView : MonoBehaviour
     {

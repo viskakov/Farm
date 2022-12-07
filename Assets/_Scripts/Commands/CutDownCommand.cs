@@ -1,4 +1,6 @@
-namespace Farm._Scripts.Commands
+using Farm.Grid;
+
+namespace Farm.Commands
 {
     public sealed class CutDownCommand : ICommand
     {

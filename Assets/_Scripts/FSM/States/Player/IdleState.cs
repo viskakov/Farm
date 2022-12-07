@@ -1,4 +1,4 @@
-namespace Farm.States.Player
+namespace Farm.FSM.States.Player
 {
     public sealed class IdleState : IState
     {

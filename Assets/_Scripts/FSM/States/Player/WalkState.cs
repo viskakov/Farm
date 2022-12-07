@@ -1,9 +1,8 @@
-using Farm._Scripts.Player;
-using TreasureHunter;
+using Farm.Player;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Farm.States.Player
+namespace Farm.FSM.States.Player
 {
     public sealed class WalkState : IState
     {

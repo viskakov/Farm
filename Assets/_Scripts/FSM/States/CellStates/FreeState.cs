@@ -1,4 +1,4 @@
-namespace Farm.States
+namespace Farm.FSM.States.CellStates
 {
     public sealed class FreeState : IState
     {

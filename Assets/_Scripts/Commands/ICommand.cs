@@ -1,4 +1,4 @@
-namespace Farm._Scripts.Commands
+namespace Farm.Commands
 {
     public interface ICommand
     {

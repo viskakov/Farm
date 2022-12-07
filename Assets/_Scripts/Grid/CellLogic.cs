@@ -1,7 +1,9 @@
-using Farm.States;
+using Farm.Food;
+using Farm.FSM;
+using Farm.FSM.States.CellStates;
 using UnityEngine;
 
-namespace Farm._Scripts
+namespace Farm.Grid
 {
     public sealed class CellLogic : MonoBehaviour
     {

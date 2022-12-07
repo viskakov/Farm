@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Farm._Scripts
+namespace Farm.UI
 {
     public class Billboard : MonoBehaviour
     {

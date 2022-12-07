@@ -1,8 +1,8 @@
-using Farm._Scripts;
-using Farm._Scripts.Items;
+using Farm.Food;
+using Farm.UI;
 using UnityEngine;
 
-namespace Farm.States
+namespace Farm.FSM.States.FoodStates
 {
     public sealed class GrowState : IState
     {

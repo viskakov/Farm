@@ -1,6 +1,8 @@
-using TreasureHunter;
+using Farm.Food;
+using Farm.Grid;
+using Farm.Player;
 
-namespace Farm._Scripts.Commands
+namespace Farm.Commands
 {
     public sealed class PlantCommand : ICommand
     {
