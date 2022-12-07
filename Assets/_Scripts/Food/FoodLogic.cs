@@ -10,16 +10,17 @@ namespace Farm._Scripts
         [SerializeField] private GameObject _foodRender;
         [SerializeField] private GrowTimerUI _growTimerUI;
 
-        public IState RipeState;
-        public IState GrowState;
-
+        private IState _ripeState;
+        private IState _growState;
         private StateMachine _stateMachine;
+
+        public IState RipeState => _ripeState;
 
         private void Awake()
         {
-            RipeState = new RipeState(_foodRender);
-            GrowState = new GrowState(this, _foodData, _foodRender, _growTimerUI);
-            _stateMachine = new StateMachine(GrowState);
+            _ripeState = new RipeState(_foodData, _foodRender);
+            _growState = new GrowState(this, _foodData, _foodRender, _growTimerUI);
+            _stateMachine = new StateMachine(_growState);
         }
 
         private void Update()

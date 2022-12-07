@@ -1,14 +1,17 @@
 using DG.Tweening;
+using Farm._Scripts.Items;
 using UnityEngine;
 
 namespace Farm.States
 {
     public sealed class RipeState : IState
     {
+        private readonly FoodData _foodData;
         private readonly GameObject _foodRender;
 
-        public RipeState(GameObject foodRender)
+        public RipeState(FoodData foodData, GameObject foodRender)
         {
+            _foodData = foodData;
             _foodRender = foodRender;
         }
 
@@ -16,6 +19,8 @@ namespace Farm.States
         {
             _foodRender.transform
                 .DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
+
+            Debug.Log($"Exp from {_foodData.Name} = {_foodData.GetExperience()}");
         }
 
         public void Update()
