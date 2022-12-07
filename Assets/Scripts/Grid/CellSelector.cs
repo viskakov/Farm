@@ -9,7 +9,6 @@ namespace Farm.Grid
         [SerializeField] private LayerMask _cellLayerMask;
 
         private Camera _mainCamera;
-        private CellLogic _cell;
 
         public static Action<CellLogic> OnCellClicked;
 
@@ -30,33 +29,14 @@ namespace Farm.Grid
                 return;
             }
 
+            CellLogic cell = null;
             var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hitData,Mathf.Infinity, _cellLayerMask))
             {
-                var cell = hitData.transform.GetComponent<CellLogic>();
-                if (cell == _cell)
-                {
-                    return;
-                }
-
-                if (_cell)
-                {
-                    _cell.Unselect();
-                }
-
-                _cell = cell;
-                _cell.Select();
-            }
-            else
-            {
-                if (_cell)
-                {
-                    _cell.Unselect();
-                    _cell = null;
-                }
+                cell = hitData.transform.GetComponent<CellLogic>();
             }
 
-            OnCellClicked?.Invoke(_cell);
+            OnCellClicked?.Invoke(cell);
         }
     }
 }

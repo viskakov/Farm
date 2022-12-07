@@ -22,6 +22,34 @@ namespace Farm.Grid
             _meshRenderer = GetComponent<MeshRenderer>();
         }
 
+        private void Start()
+        {
+            CellSelector.OnCellClicked += OnCellClicked;
+        }
+
+        private void OnDestroy()
+        {
+            CellSelector.OnCellClicked -= OnCellClicked;
+        }
+
+        private void OnCellClicked(CellLogic cell)
+        {
+            if (!cell)
+            {
+                Unselect();
+                return;
+            }
+
+            if (cell == this)
+            {
+                Select();
+            }
+            else
+            {
+                Unselect();
+            }
+        }
+
         private void ChangeState(IState state)
         {
             _stateMachine.ChangeState(state);
@@ -38,12 +66,12 @@ namespace Farm.Grid
             ChangeState(_plantedState);
         }
 
-        public void Select()
+        private void Select()
         {
             _meshRenderer.material.color = new Color(0.7f, 0.7f, 0.7f, 1f);
         }
 
-        public void Unselect()
+        private void Unselect()
         {
             _meshRenderer.material.color = Color.white;
         }
