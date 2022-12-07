@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Farm.Food;
+using GameStat;
 using UnityEngine;
 
 namespace Farm.FSM.States.FoodStates
@@ -20,7 +21,7 @@ namespace Farm.FSM.States.FoodStates
             _foodRender.transform
                 .DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
 
-            Debug.Log($"Exp from {_foodData.Name} = {_foodData.GetExperience()}");
+            GameStatManager.AddExperience(_foodData.GetExperience());
         }
 
         public void Update()
