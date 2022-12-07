@@ -16,8 +16,8 @@ namespace Farm.Player
         private Quaternion _lookRotation;
         private bool _isNeedToRotate;
         private StateMachine _stateMachine;
-
         private IState _walkState;
+
         public IState IdleState { get; private set; }
         public IState PlantState { get; private set; }
         public Vector3 Destination { get; private set; }
@@ -64,7 +64,7 @@ namespace Farm.Player
             ChangeState(_walkState);
         }
 
-        private void Update()
+        public void Update()
         {
             _stateMachine.CurrentState.Update();
         }
