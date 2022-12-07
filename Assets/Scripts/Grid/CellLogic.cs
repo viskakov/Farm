@@ -24,30 +24,23 @@ namespace Farm.Grid
 
         private void Start()
         {
-            CellSelector.OnCellClicked += OnCellClicked;
+            CellSelector.OnCellClicked += OnCellClickedHandler;
         }
 
         private void OnDestroy()
         {
-            CellSelector.OnCellClicked -= OnCellClicked;
+            CellSelector.OnCellClicked -= OnCellClickedHandler;
         }
 
-        private void OnCellClicked(CellLogic cell)
+        private void OnCellClickedHandler(CellLogic cell)
         {
-            if (!cell)
+            if (!cell || cell != this)
             {
                 Unselect();
                 return;
             }
 
-            if (cell == this)
-            {
-                Select();
-            }
-            else
-            {
-                Unselect();
-            }
+            Select();
         }
 
         private void ChangeState(IState state)
