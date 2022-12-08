@@ -24,15 +24,15 @@ namespace Farm.Grid
 
         private void Start()
         {
-            CellSelector.OnCellClicked += OnCellClickedHandler;
+            CellSelector.OnCellHighlight += OnCellHighlightHandler;
         }
 
         private void OnDestroy()
         {
-            CellSelector.OnCellClicked -= OnCellClickedHandler;
+            CellSelector.OnCellHighlight -= OnCellHighlightHandler;
         }
 
-        private void OnCellClickedHandler(CellLogic cell)
+        private void OnCellHighlightHandler(CellLogic cell)
         {
             if (!cell || cell != this)
             {

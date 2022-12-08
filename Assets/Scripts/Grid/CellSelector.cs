@@ -11,6 +11,7 @@ namespace Farm.Grid
         private Camera _mainCamera;
 
         public static Action<CellLogic> OnCellClicked;
+        public static Action<CellLogic> OnCellHighlight;
 
         private void Awake()
         {
@@ -19,11 +20,6 @@ namespace Farm.Grid
 
         private void Update()
         {
-            if (!Input.GetMouseButtonDown(0))
-            {
-                return;
-            }
-
             if (EventSystem.current.IsPointerOverGameObject())
             {
                 return;
@@ -34,9 +30,13 @@ namespace Farm.Grid
             if (Physics.Raycast(ray, out var hitData,Mathf.Infinity, _cellLayerMask))
             {
                 cell = hitData.transform.GetComponent<CellLogic>();
+                OnCellHighlight?.Invoke(cell);
             }
 
-            OnCellClicked?.Invoke(cell);
+            if (Input.GetMouseButtonDown(0))
+            {
+                OnCellClicked?.Invoke(cell);
+            }
         }
     }
 }
