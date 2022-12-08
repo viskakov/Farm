@@ -9,17 +9,21 @@ namespace Farm.FSM.States.FoodStates
     {
         private readonly FoodData _foodData;
         private readonly GameObject _foodRender;
+        private readonly ParticleSystem _particleSystem;
 
-        public RipeState(FoodData foodData, GameObject foodRender)
+        public RipeState(FoodData foodData, GameObject foodRender, ParticleSystem particleSystem)
         {
             _foodData = foodData;
             _foodRender = foodRender;
+            _particleSystem = particleSystem;
         }
 
         public void Enter()
         {
             _foodRender.transform
                 .DOPunchScale(Vector3.one * 0.1f, 0.3f, 3, 0.3f);
+
+            _particleSystem.Play();
 
             GameStatManager.AddExperience(_foodData.GetExperience());
         }
