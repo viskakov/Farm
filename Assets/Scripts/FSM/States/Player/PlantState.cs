@@ -17,6 +17,7 @@ namespace Farm.FSM.States.Player
         public void Enter()
         {
             _playerAnimator.PlayPlantAnimation();
+            _playerMovement.HandWateringCan.SetActive(true);
         }
 
         public void Update()
@@ -30,6 +31,7 @@ namespace Farm.FSM.States.Player
 
         public void Exit()
         {
+            _playerMovement.HandWateringCan.SetActive(false);
         }
 
         private void Plant()

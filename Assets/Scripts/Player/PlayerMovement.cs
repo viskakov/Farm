@@ -9,6 +9,7 @@ namespace Farm.Player
     public sealed class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float _speedRotation = 5f;
+        [SerializeField] private GameObject _handWateringCan;
 
         private NavMeshAgent _agent;
         private PlayerAnimator _playerAnimator;
@@ -22,6 +23,7 @@ namespace Farm.Player
         public IState PlantState { get; private set; }
         public Vector3 Destination { get; private set; }
         public Action OnCompleted;
+        public GameObject HandWateringCan => _handWateringCan;
 
         public static PlayerMovement Instance;
 
@@ -44,6 +46,7 @@ namespace Farm.Player
             PlantState = new PlantState(this, _playerAnimator);
 
             _stateMachine = new StateMachine(IdleState);
+            HandWateringCan.SetActive(false);
         }
 
         public void ChangeState(IState state)
