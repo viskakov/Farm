@@ -25,7 +25,7 @@ namespace Farm.Player
         public Action OnCompleted;
         public GameObject HandWateringCan => _handWateringCan;
 
-        public static PlayerMovement Instance;
+        public static PlayerMovement Instance { get; private set; }
 
         private void Awake()
         {
