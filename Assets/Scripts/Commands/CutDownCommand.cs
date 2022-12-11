@@ -1,4 +1,5 @@
 using Farm.Grid;
+using Farm.Player;
 
 namespace Farm.Commands
 {
@@ -13,7 +14,8 @@ namespace Farm.Commands
 
         public void Execute()
         {
-            // TO DO
+            void HarvestAction() => _cell.Harvest();
+            PlayerMovement.Instance.SetDestination(_cell.transform.position, HarvestAction);
         }
     }
 }

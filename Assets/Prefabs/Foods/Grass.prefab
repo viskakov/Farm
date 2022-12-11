@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4769856497312998912}
-  - component: {fileID: 6620782093520734758}
+  - component: {fileID: 5823977146208614202}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6620782093520734758
+--- !u!114 &5823977146208614202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1820607931783320024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fafb3fccd18e4b62a846dcfd3503bed6, type: 3}
+  m_Script: {fileID: 11500000, guid: 83d85088def54e61a05d3dbc7f34619e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _foodData: {fileID: 11400000, guid: fc81738ecafab45108e9daf45da3a096, type: 2}

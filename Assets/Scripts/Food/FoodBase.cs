@@ -1,11 +1,19 @@
+using Farm.Food;
 using Farm.FSM;
 using Farm.FSM.States.FoodStates;
 using Farm.UI;
 using UnityEngine;
 
-namespace Farm.Food
+namespace Food
 {
-    public sealed class FoodLogic : MonoBehaviour
+    public enum FoodKind
+    {
+        Carrot = 0,
+        Grass = 1,
+        Tree = 2
+    }
+
+    public abstract class FoodBase : MonoBehaviour
     {
         [SerializeField] private FoodData _foodData;
         [SerializeField] private GameObject _foodRender;
@@ -17,6 +25,9 @@ namespace Farm.Food
         private StateMachine _stateMachine;
 
         public IState RipeState => _ripeState;
+        public FoodKind FoodKind { get; protected set; }
+
+        public abstract void Interact();
 
         private void Awake()
         {

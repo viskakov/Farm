@@ -1,3 +1,4 @@
+using Food;
 using UnityEngine;
 
 namespace Farm.Food
@@ -8,7 +9,7 @@ namespace Farm.Food
         public string Name;
         public Sprite Icon;
         public float GrowTime;
-        public FoodLogic FoodPrefab;
+        public FoodBase FoodPrefab;
         public int Experience;
 
         public int GetExperience()

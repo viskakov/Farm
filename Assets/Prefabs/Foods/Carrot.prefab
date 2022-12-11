@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8951133124507571323}
-  - component: {fileID: 3380989157037939765}
+  - component: {fileID: 301605704874502135}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Untagged
@@ -119,7 +119,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3380989157037939765
+--- !u!114 &301605704874502135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8082077509353358842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fafb3fccd18e4b62a846dcfd3503bed6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d9e9f6aff1a4906bdb8685aa6106d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _foodData: {fileID: 11400000, guid: cbc9a403847e54048b94673f422f29e3, type: 2}

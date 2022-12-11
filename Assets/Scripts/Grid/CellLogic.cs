@@ -1,6 +1,6 @@
-using Farm.Food;
 using Farm.FSM;
 using Farm.FSM.States.CellStates;
+using Food;
 using UnityEngine;
 
 namespace Farm.Grid
@@ -12,7 +12,8 @@ namespace Farm.Grid
         private StateMachine _stateMachine;
         private MeshRenderer _meshRenderer;
 
-        private bool IsFree => _stateMachine.CurrentState == _freeState;
+        public bool IsFree => _stateMachine.CurrentState == _freeState;
+        public FoodBase CurrentFood { get; private set; }
 
         private void Awake()
         {
@@ -48,15 +49,26 @@ namespace Farm.Grid
             _stateMachine.ChangeState(state);
         }
 
-        public void Plant(FoodLogic foodLogic)
+        public void Plant(FoodBase foodBase)
         {
             if (!IsFree)
             {
                 return;
             }
 
-            Instantiate(foodLogic, transform.position, Quaternion.identity, transform);
+            CurrentFood = Instantiate(foodBase, transform.position, Quaternion.identity, transform);
             ChangeState(_plantedState);
+        }
+
+        public void Harvest()
+        {
+            if (IsFree)
+            {
+                return;
+            }
+
+            CurrentFood.Interact();
+            ChangeState(_freeState);
         }
 
         private void Select()

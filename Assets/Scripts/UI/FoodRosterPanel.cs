@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using Farm.Commands;
 using Farm.Food;
 using Farm.Grid;
+using Food;
 using UnityEngine;
 
 namespace Farm.UI
@@ -20,7 +23,7 @@ namespace Farm.UI
         private void Awake()
         {
             LoadFoodData();
-            CreateButtons();
+            CreateFoodButtons();
         }
 
         private void LoadFoodData()
@@ -42,6 +45,42 @@ namespace Farm.UI
 
         private void OnCellClickedHandler(CellLogic cell)
         {
+            // Prevent spam panel show on same cell
+            if (cell == SelectedCell)
+            {
+                return;
+            }
+
+            // Recognized food kind in selected cell...
+            if (cell && cell.CurrentFood)
+            {
+                switch (cell.CurrentFood.FoodKind)
+                {
+                    case FoodKind.Carrot:
+                    {
+                        var pickupCommand = new PickupCommand(cell);
+                        pickupCommand.Execute();
+                        break;
+                    }
+                    case FoodKind.Grass:
+                    {
+                        var cutDownCommand = new CutDownCommand(cell);
+                        cutDownCommand.Execute();
+                        break;
+                    }
+                    case FoodKind.Tree:
+                    {
+                        cell.Harvest();
+                        break;
+                    }
+                    default:
+                    {
+                        Debug.Log("Undefined");
+                        throw new ArgumentOutOfRangeException();
+                    }
+                }
+            }
+
             if (cell)
             {
                 SelectedCell = cell;
@@ -54,10 +93,9 @@ namespace Farm.UI
             }
         }
 
-        private void CreateButtons()
+        private void CreateFoodButtons()
         {
-            var count = _foods.Count;
-            for (var i = 0; i < count; i++)
+            for (var i = 0; i < _foods.Count; i++)
             {
                 var instance = Instantiate(_buttonPrefab, Vector3.zero, Quaternion.identity, _parent);
                 instance.name = $"{_foods[i].Name} button";

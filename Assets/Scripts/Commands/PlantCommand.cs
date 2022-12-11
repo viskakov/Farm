@@ -1,15 +1,15 @@
-using Farm.Food;
 using Farm.Grid;
 using Farm.Player;
+using Food;
 
 namespace Farm.Commands
 {
     public sealed class PlantCommand : ICommand
     {
         private readonly CellLogic _cell;
-        private readonly FoodLogic _food;
+        private readonly FoodBase _food;
 
-        public PlantCommand(CellLogic cell, FoodLogic food)
+        public PlantCommand(CellLogic cell, FoodBase food)
         {
             _cell = cell;
             _food = food;
