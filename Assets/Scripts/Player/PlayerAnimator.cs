@@ -21,5 +21,10 @@ namespace Farm.Player
         {
             Animator.SetTrigger(AnimatorHash.Plant);
         }
+
+        public void PlayPickupAnimation()
+        {
+            Animator.SetTrigger(AnimatorHash.Pickup);
+        }
     }
 }
