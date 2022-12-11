@@ -16,7 +16,7 @@ namespace Farm.FSM.States.Player
 
         public void Enter()
         {
-            _playerAnimator.PlayPlantAnimation();
+            _playerAnimator.TriggerAnimation(_playerMovement.Task.AnimationHash);
             _playerMovement.HandWateringCan.SetActive(true);
         }
 
@@ -36,7 +36,7 @@ namespace Farm.FSM.States.Player
 
         private void Plant()
         {
-            _playerMovement.OnCompleted?.Invoke();
+            _playerMovement.Task.Action?.Invoke();
             _playerMovement.ChangeState(_playerMovement.IdleState);
         }
     }

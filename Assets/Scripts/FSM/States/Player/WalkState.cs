@@ -32,7 +32,7 @@ namespace Farm.FSM.States.Player
                 return;
             }
 
-            _playerMovement.ChangeState(_playerMovement.PlantState);
+            _playerMovement.ChangeState(_playerMovement.Task.NextState);
         }
 
         public void Exit()
@@ -41,13 +41,13 @@ namespace Farm.FSM.States.Player
 
         private void UpdateAnimator()
         {
-            var isMoving = _agent.velocity.magnitude > 0f;
+            var isMoving = _agent.velocity.magnitude > Mathf.Epsilon;
             _playerAnimator.PlayWalkAnimation(isMoving);
         }
 
         private void MoveTo()
         {
-            _agent.SetDestination(_playerMovement.Destination);
+            _agent.SetDestination(_playerMovement.Task.Position);
         }
     }
 }

@@ -17,14 +17,9 @@ namespace Farm.Player
             Animator.SetBool(AnimatorHash.Walking, isMoving);
         }
 
-        public void PlayPlantAnimation()
+        public void TriggerAnimation(int animationHash)
         {
-            Animator.SetTrigger(AnimatorHash.Plant);
-        }
-
-        public void PlayPickupAnimation()
-        {
-            Animator.SetTrigger(AnimatorHash.Pickup);
+            Animator.SetTrigger(animationHash);
         }
     }
 }

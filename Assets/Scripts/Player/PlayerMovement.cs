@@ -6,6 +6,22 @@ using UnityEngine.AI;
 
 namespace Farm.Player
 {
+    public sealed class Task
+    {
+        public Vector3 Position { get; }
+        public IState NextState { get; }
+        public int AnimationHash { get; }
+        public Action Action { get; }
+
+        public Task(Vector3 position, IState nextState, int animationHash, Action action)
+        {
+            Position = position;
+            NextState = nextState;
+            AnimationHash = animationHash;
+            Action = action;
+        }
+    }
+
     public sealed class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private GameObject _handWateringCan;
@@ -13,15 +29,17 @@ namespace Farm.Player
         private NavMeshAgent _agent;
         private PlayerAnimator _playerAnimator;
         private StateMachine _stateMachine;
-        private IState _walkState;
 
         public IState IdleState { get; private set; }
+        public IState WalkState { get; private set; }
         public IState PlantState { get; private set; }
-        public Vector3 Destination { get; private set; }
-        public Action OnCompleted;
-        public GameObject HandWateringCan => _handWateringCan;
+        public IState PickupState { get; private set; }
+        public Task Task { get; private set; }
 
         public static PlayerMovement Instance { get; private set; }
+
+        // TODO remove from class
+        public GameObject HandWateringCan => _handWateringCan;
 
         private void Awake()
         {
@@ -37,11 +55,16 @@ namespace Farm.Player
             _agent = GetComponent<NavMeshAgent>();
             _playerAnimator = GetComponent<PlayerAnimator>();
 
-            _walkState = new WalkState(this, _playerAnimator, _agent);
             IdleState = new IdleState();
+            WalkState = new WalkState(this, _playerAnimator, _agent);
             PlantState = new PlantState(this, _playerAnimator);
+            PickupState = new PickupState(this, _playerAnimator);
 
             _stateMachine = new StateMachine(IdleState);
+        }
+
+        private void Start()
+        {
             HandWateringCan.SetActive(false);
         }
 
@@ -50,22 +73,15 @@ namespace Farm.Player
             _stateMachine.ChangeState(state);
         }
 
-        public void SetDestination(Vector3 destination, Action onCompleted)
-        {
-            if (_stateMachine.CurrentState == PlantState)
-            {
-                return;
-            }
-
-            Destination = destination;
-            OnCompleted = onCompleted;
-
-            ChangeState(_walkState);
-        }
-
         public void Update()
         {
             _stateMachine.CurrentState.Update();
+        }
+
+        public void SetTask(Task task)
+        {
+            Task = task;
+            ChangeState(WalkState);
         }
     }
 }

@@ -1,5 +1,6 @@
 using Farm.Grid;
 using Farm.Player;
+using UnityEngine;
 
 namespace Farm.Commands
 {
@@ -14,8 +15,9 @@ namespace Farm.Commands
 
         public void Execute()
         {
+            Debug.Log("TO DO cut down command");
             void HarvestAction() => _cell.Harvest();
-            PlayerMovement.Instance.SetDestination(_cell.transform.position, HarvestAction);
+            // PlayerMovement.Instance.SetDestination(_cell.transform.position, HarvestAction);
         }
     }
 }

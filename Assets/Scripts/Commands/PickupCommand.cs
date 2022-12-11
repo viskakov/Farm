@@ -1,4 +1,5 @@
 using Farm.Grid;
+using Farm.Helpers;
 using Farm.Player;
 
 namespace Farm.Commands
@@ -15,7 +16,9 @@ namespace Farm.Commands
         public void Execute()
         {
             void HarvestAction() => _cell.Harvest();
-            PlayerMovement.Instance.SetDestination(_cell.transform.position, HarvestAction);
+            var nextState = PlayerMovement.Instance.PickupState;
+            var newTask = new Task(_cell.transform.position, nextState, AnimatorHash.Pickup, HarvestAction);
+            PlayerMovement.Instance.SetTask(newTask);
         }
     }
 }

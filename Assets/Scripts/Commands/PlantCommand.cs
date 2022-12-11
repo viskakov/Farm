@@ -1,4 +1,5 @@
 using Farm.Grid;
+using Farm.Helpers;
 using Farm.Player;
 using Food;
 
@@ -18,7 +19,9 @@ namespace Farm.Commands
         public void Execute()
         {
             void PlantAction() => _cell.Plant(_food);
-            PlayerMovement.Instance.SetDestination(_cell.transform.position, PlantAction);
+            var nextState = PlayerMovement.Instance.PlantState;
+            var newTask = new Task(_cell.transform.position, nextState, AnimatorHash.Plant, PlantAction);
+            PlayerMovement.Instance.SetTask(newTask);
         }
     }
 }
