@@ -3,7 +3,7 @@ using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace GameStat
+namespace GameData
 {
     [Serializable]
     public class GameData<T>
@@ -28,8 +28,11 @@ namespace GameStat
 
         private void Awake()
         {
+#if UNITY_EDITOR
             _dataPath = Application.dataPath + "/Data/GameData.json";
-
+#elif UNITY_STANDALONE
+            _dataPath = Application.persistentDataPath + "/GameData.json";
+#endif
             var loadedGameData = LoadProgress<GameData<int>>();
             _gameData = loadedGameData != null
                 ? new GameData<int>(loadedGameData.Carrot, loadedGameData.Experience)

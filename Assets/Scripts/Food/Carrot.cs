@@ -1,5 +1,5 @@
 using Food;
-using GameStat;
+using GameData;
 
 public class Carrot : FoodBase
 {

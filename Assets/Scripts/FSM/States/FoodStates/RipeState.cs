@@ -1,6 +1,6 @@
 using DG.Tweening;
 using Farm.Food;
-using GameStat;
+using GameData;
 using UnityEngine;
 
 namespace Farm.FSM.States.FoodStates
