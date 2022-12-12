@@ -25,7 +25,7 @@ namespace Farm.FSM.States.FoodStates
 
             _particleSystem.Play();
 
-            GameStatManager.AddExperience(_foodData.GetExperience());
+            GameDataManager.AddExperience(_foodData.GetExperience());
         }
 
         public void Update()

@@ -15,7 +15,7 @@ public class Carrot : FoodBase
             return false;
         }
 
-        GameStatManager.AddCarrot();
+        GameDataManager.AddCarrot();
         Destroy(gameObject);
         return true;
     }

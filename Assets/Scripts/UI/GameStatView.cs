@@ -13,14 +13,14 @@ namespace Farm.UI
 
         private void OnEnable()
         {
-            GameStatManager.OnCarrotChange += OnCarrotChange;
-            GameStatManager.OnExperienceChange += OnExperienceChange;
+            GameDataManager.OnCarrotChange += OnCarrotChange;
+            GameDataManager.OnExperienceChange += OnExperienceChange;
         }
 
         private void OnDisable()
         {
-            GameStatManager.OnCarrotChange -= OnCarrotChange;
-            GameStatManager.OnExperienceChange -= OnExperienceChange;
+            GameDataManager.OnCarrotChange -= OnCarrotChange;
+            GameDataManager.OnExperienceChange -= OnExperienceChange;
         }
 
         private void OnCarrotChange(int prevValue, int newValue)
