@@ -1235,6 +1235,7 @@ MonoBehaviour:
   _cellLogicPrefab: {fileID: 8876867882564724827, guid: 214fcb51d83224ca088216af04614833, type: 3}
   _width: 4
   _height: 3
+  _spacing: 1.01
 --- !u!4 &1138488339
 Transform:
   m_ObjectHideFlags: 0
