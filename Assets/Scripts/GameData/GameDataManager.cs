@@ -33,7 +33,7 @@ namespace GameData
 #elif UNITY_STANDALONE
             _dataPath = Application.persistentDataPath + "/GameData.json";
 #endif
-            var loadedGameData = LoadProgress<GameData<int>>();
+            var loadedGameData = Load<GameData<int>>();
             _gameData = loadedGameData != null
                 ? new GameData<int>(loadedGameData.Carrot, loadedGameData.Experience)
                 : new GameData<int>(0, 0);
@@ -59,13 +59,13 @@ namespace GameData
             OnExperienceChange?.Invoke(prevValue, _gameData.Experience);
         }
 
-        private static void SaveProgress<T>(GameData<T> gameData)
+        private static void Save<T>(GameData<T> gameData)
         {
             var dataJson = JsonConvert.SerializeObject(gameData);
             File.WriteAllText(_dataPath, dataJson);
         }
 
-        private static T LoadProgress<T>()
+        private static T Load<T>()
         {
             T gameData = default;
             if (File.Exists(_dataPath))
@@ -79,7 +79,7 @@ namespace GameData
 
         private void OnApplicationQuit()
         {
-            SaveProgress(_gameData);
+            Save(_gameData);
         }
     }
 }
