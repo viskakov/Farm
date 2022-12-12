@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Farm.Player
 {
-    public class PlayerView : MonoBehaviour
+    public sealed class PlayerView : MonoBehaviour
     {
         [SerializeField] private GameObject _handWateringCan;
 

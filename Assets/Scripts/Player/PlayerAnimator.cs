@@ -17,9 +17,9 @@ namespace Farm.Player
             Animator.SetBool(AnimatorHash.Walking, isMoving);
         }
 
-        public void TriggerAnimation(int animationHash)
+        public void TriggerAnimation(int hash)
         {
-            Animator.SetTrigger(animationHash);
+            Animator.SetTrigger(hash);
         }
     }
 }

@@ -43,6 +43,7 @@ namespace Farm.UI
             CellSelector.OnCellClicked -= OnCellClickedHandler;
         }
 
+        // TODO Refactor this
         private void OnCellClickedHandler(CellLogic cell)
         {
             if (cell == null)
