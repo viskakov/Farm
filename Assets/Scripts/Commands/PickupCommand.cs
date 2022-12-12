@@ -16,9 +16,9 @@ namespace Farm.Commands
         public void Execute()
         {
             void HarvestAction() => _cell.Harvest();
-            var nextState = PlayerMovement.Instance.PickupState;
+            var nextState = PlayerController.Instance.PickupState;
             var newTask = new Task(_cell.transform.position, nextState, AnimatorHash.Pickup, HarvestAction);
-            PlayerMovement.Instance.SetTask(newTask);
+            PlayerController.Instance.SetTask(newTask);
         }
     }
 }

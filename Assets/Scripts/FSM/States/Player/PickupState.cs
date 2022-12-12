@@ -5,19 +5,19 @@ namespace Farm.FSM.States.Player
 {
     public sealed class PickupState : IState
     {
-        private readonly PlayerMovement _playerMovement;
+        private readonly PlayerController _playerController;
         private readonly PlayerAnimator _playerAnimator;
         private int _actionAnimationHash;
 
-        public PickupState(PlayerMovement playerMovement, PlayerAnimator playerAnimator)
+        public PickupState(PlayerController playerController, PlayerAnimator playerAnimator)
         {
-            _playerMovement = playerMovement;
+            _playerController = playerController;
             _playerAnimator = playerAnimator;
         }
 
         public void Enter()
         {
-            _actionAnimationHash = _playerMovement.Task.AnimationHash;
+            _actionAnimationHash = _playerController.Task.AnimationHash;
             _playerAnimator.TriggerAnimation(_actionAnimationHash);
         }
 
@@ -36,8 +36,8 @@ namespace Farm.FSM.States.Player
 
         private void Pickup()
         {
-            _playerMovement.Task.Action?.Invoke();
-            _playerMovement.ChangeState(_playerMovement.IdleState);
+            _playerController.Task.Action?.Invoke();
+            _playerController.ChangeState(_playerController.IdleState);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Farm.Player
         }
     }
 
-    public sealed class PlayerMovement : MonoBehaviour
+    public sealed class PlayerController : MonoBehaviour
     {
         private NavMeshAgent _agent;
         private PlayerAnimator _playerAnimator;
@@ -35,18 +35,22 @@ namespace Farm.Player
         public IState PickupState { get; private set; }
         public Task Task { get; private set; }
 
-        public static PlayerMovement Instance { get; private set; }
+        public static PlayerController Instance { get; private set; }
 
         private void Awake()
         {
-            if (Instance == null)
+            void CreateSingleton()
             {
-                Instance = this;
+                if (Instance == null)
+                {
+                    Instance = this;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
-            else
-            {
-                Destroy(gameObject);
-            }
+            CreateSingleton();
 
             _agent = GetComponent<NavMeshAgent>();
             _playerAnimator = GetComponent<PlayerAnimator>();

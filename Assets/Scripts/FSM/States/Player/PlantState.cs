@@ -5,20 +5,20 @@ namespace Farm.FSM.States.Player
 {
     public sealed class PlantState : IState
     {
-        private readonly PlayerMovement _playerMovement;
+        private readonly PlayerController _playerController;
         private readonly PlayerAnimator _playerAnimator;
         private readonly PlayerView _playerView;
 
-        public PlantState(PlayerMovement playerMovement, PlayerAnimator playerAnimator, PlayerView playerView)
+        public PlantState(PlayerController playerController, PlayerAnimator playerAnimator, PlayerView playerView)
         {
-            _playerMovement = playerMovement;
+            _playerController = playerController;
             _playerAnimator = playerAnimator;
             _playerView = playerView;
         }
 
         public void Enter()
         {
-            _playerAnimator.TriggerAnimation(_playerMovement.Task.AnimationHash);
+            _playerAnimator.TriggerAnimation(_playerController.Task.AnimationHash);
             _playerView.HandWateringCan.SetActive(true);
         }
 
@@ -38,8 +38,8 @@ namespace Farm.FSM.States.Player
 
         private void Plant()
         {
-            _playerMovement.Task.Action?.Invoke();
-            _playerMovement.ChangeState(_playerMovement.IdleState);
+            _playerController.Task.Action?.Invoke();
+            _playerController.ChangeState(_playerController.IdleState);
         }
     }
 }

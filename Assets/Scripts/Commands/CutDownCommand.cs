@@ -18,11 +18,11 @@ namespace Farm.Commands
             void HarvestAction() => _cell.Harvest();
 
             // TODO new state
-            var nextState = PlayerMovement.Instance.PickupState;
+            var nextState = PlayerController.Instance.PickupState;
 
             // TODO new animation hash
             var newTask = new Task(_cell.transform.position, nextState, AnimatorHash.Pickup, HarvestAction);
-            PlayerMovement.Instance.SetTask(newTask);
+            PlayerController.Instance.SetTask(newTask);
         }
     }
 }

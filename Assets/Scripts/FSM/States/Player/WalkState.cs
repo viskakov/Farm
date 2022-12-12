@@ -6,13 +6,13 @@ namespace Farm.FSM.States.Player
 {
     public sealed class WalkState : IState
     {
-        private readonly PlayerMovement _playerMovement;
+        private readonly PlayerController _playerController;
         private readonly PlayerAnimator _playerAnimator;
         private readonly NavMeshAgent _agent;
 
-        public WalkState(PlayerMovement playerMovement, PlayerAnimator playerAnimator, NavMeshAgent agent)
+        public WalkState(PlayerController playerController, PlayerAnimator playerAnimator, NavMeshAgent agent)
         {
-            _playerMovement = playerMovement;
+            _playerController = playerController;
             _playerAnimator = playerAnimator;
             _agent = agent;
         }
@@ -32,7 +32,7 @@ namespace Farm.FSM.States.Player
                 return;
             }
 
-            _playerMovement.ChangeState(_playerMovement.Task.NextState);
+            _playerController.ChangeState(_playerController.Task.NextState);
         }
 
         public void Exit()
@@ -47,7 +47,7 @@ namespace Farm.FSM.States.Player
 
         private void MoveTo()
         {
-            _agent.SetDestination(_playerMovement.Task.Position);
+            _agent.SetDestination(_playerController.Task.Position);
         }
     }
 }

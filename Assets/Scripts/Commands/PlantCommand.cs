@@ -19,9 +19,9 @@ namespace Farm.Commands
         public void Execute()
         {
             void PlantAction() => _cell.Plant(_food);
-            var nextState = PlayerMovement.Instance.PlantState;
+            var nextState = PlayerController.Instance.PlantState;
             var newTask = new Task(_cell.transform.position, nextState, AnimatorHash.Plant, PlantAction);
-            PlayerMovement.Instance.SetTask(newTask);
+            PlayerController.Instance.SetTask(newTask);
         }
     }
 }
