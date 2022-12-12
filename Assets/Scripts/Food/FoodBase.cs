@@ -24,10 +24,12 @@ namespace Food
         private IState _growState;
         private StateMachine _stateMachine;
 
+        public bool IsRipe => _stateMachine.CurrentState == _ripeState;
+
         public IState RipeState => _ripeState;
         public FoodKind FoodKind { get; protected set; }
 
-        public abstract void Interact();
+        public abstract bool Interact();
 
         private void Awake()
         {

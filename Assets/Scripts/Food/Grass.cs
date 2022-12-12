@@ -1,5 +1,4 @@
 using Food;
-using UnityEngine;
 
 public class Grass : FoodBase
 {
@@ -8,9 +7,14 @@ public class Grass : FoodBase
         FoodKind = FoodKind.Grass;
     }
 
-    public override void Interact()
+    public override bool Interact()
     {
-        Debug.Log("Grass cut down");
+        if (!IsRipe)
+        {
+            return false;
+        }
+
         Destroy(gameObject);
+        return true;
     }
 }

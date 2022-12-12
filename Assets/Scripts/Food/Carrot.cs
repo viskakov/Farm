@@ -1,6 +1,5 @@
 using Food;
 using GameStat;
-using UnityEngine;
 
 public class Carrot : FoodBase
 {
@@ -9,10 +8,15 @@ public class Carrot : FoodBase
         FoodKind = FoodKind.Carrot;
     }
 
-    public override void Interact()
+    public override bool Interact()
     {
-        Debug.Log("Carrot pickup");
+        if (!IsRipe)
+        {
+            return false;
+        }
+
         GameStatManager.AddCarrot();
         Destroy(gameObject);
+        return true;
     }
 }

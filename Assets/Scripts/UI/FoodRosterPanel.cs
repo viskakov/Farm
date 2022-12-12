@@ -45,14 +45,29 @@ namespace Farm.UI
 
         private void OnCellClickedHandler(CellLogic cell)
         {
+            if (cell == null)
+            {
+                SelectedCell = null;
+                Hide();
+            }
+
             // Prevent spam panel show on same cell
             if (cell == SelectedCell)
             {
                 return;
             }
 
-            // Recognized food kind in selected cell...
-            if (cell && cell.CurrentFood)
+            if (cell.IsFree)
+            {
+                SelectedCell = cell;
+                Show();
+                return;
+            }
+
+            SelectedCell = cell;
+            Hide();
+
+            if (cell.CurrentFood.IsRipe)
             {
                 switch (cell.CurrentFood.FoodKind)
                 {
@@ -70,7 +85,8 @@ namespace Farm.UI
                     }
                     case FoodKind.Tree:
                     {
-                        cell.Harvest();
+                        var doNothingCommand = new DoNothingCommand();
+                        doNothingCommand.Execute();
                         break;
                     }
                     default:
@@ -79,17 +95,6 @@ namespace Farm.UI
                         throw new ArgumentOutOfRangeException();
                     }
                 }
-            }
-
-            if (cell)
-            {
-                SelectedCell = cell;
-                Show();
-            }
-            else
-            {
-                SelectedCell = null;
-                Hide();
             }
         }
 

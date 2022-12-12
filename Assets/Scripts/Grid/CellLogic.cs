@@ -67,8 +67,10 @@ namespace Farm.Grid
                 return;
             }
 
-            CurrentFood.Interact();
-            ChangeState(_freeState);
+            if (CurrentFood.Interact())
+            {
+                ChangeState(_freeState);
+            }
         }
 
         private void Select()

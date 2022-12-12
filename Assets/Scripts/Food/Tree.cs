@@ -7,8 +7,15 @@ public class Tree : FoodBase
         FoodKind = FoodKind.Tree;
     }
 
-    public override void Interact()
+    public override bool Interact()
     {
+        if (!IsRipe)
+        {
+            return false;
+        }
+
         // Do nothing
+
+        return true;
     }
 }
