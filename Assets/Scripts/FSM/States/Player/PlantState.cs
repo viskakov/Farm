@@ -7,17 +7,19 @@ namespace Farm.FSM.States.Player
     {
         private readonly PlayerMovement _playerMovement;
         private readonly PlayerAnimator _playerAnimator;
+        private readonly PlayerView _playerView;
 
-        public PlantState(PlayerMovement playerMovement, PlayerAnimator playerAnimator)
+        public PlantState(PlayerMovement playerMovement, PlayerAnimator playerAnimator, PlayerView playerView)
         {
             _playerMovement = playerMovement;
             _playerAnimator = playerAnimator;
+            _playerView = playerView;
         }
 
         public void Enter()
         {
             _playerAnimator.TriggerAnimation(_playerMovement.Task.AnimationHash);
-            _playerMovement.HandWateringCan.SetActive(true);
+            _playerView.HandWateringCan.SetActive(true);
         }
 
         public void Update()
@@ -31,7 +33,7 @@ namespace Farm.FSM.States.Player
 
         public void Exit()
         {
-            _playerMovement.HandWateringCan.SetActive(false);
+            _playerView.HandWateringCan.SetActive(false);
         }
 
         private void Plant()

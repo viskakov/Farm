@@ -24,10 +24,9 @@ namespace Farm.Player
 
     public sealed class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private GameObject _handWateringCan;
-
         private NavMeshAgent _agent;
         private PlayerAnimator _playerAnimator;
+        private PlayerView _playerView;
         private StateMachine _stateMachine;
 
         public IState IdleState { get; private set; }
@@ -37,9 +36,6 @@ namespace Farm.Player
         public Task Task { get; private set; }
 
         public static PlayerMovement Instance { get; private set; }
-
-        // TODO remove from class
-        public GameObject HandWateringCan => _handWateringCan;
 
         private void Awake()
         {
@@ -54,18 +50,14 @@ namespace Farm.Player
 
             _agent = GetComponent<NavMeshAgent>();
             _playerAnimator = GetComponent<PlayerAnimator>();
+            _playerView = GetComponent<PlayerView>();
 
             IdleState = new IdleState();
             WalkState = new WalkState(this, _playerAnimator, _agent);
-            PlantState = new PlantState(this, _playerAnimator);
+            PlantState = new PlantState(this, _playerAnimator, _playerView);
             PickupState = new PickupState(this, _playerAnimator);
 
             _stateMachine = new StateMachine(IdleState);
-        }
-
-        private void Start()
-        {
-            HandWateringCan.SetActive(false);
         }
 
         public void ChangeState(IState state)
