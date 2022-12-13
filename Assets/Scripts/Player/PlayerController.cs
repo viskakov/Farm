@@ -28,6 +28,7 @@ namespace Farm.Player
         private PlayerAnimator _playerAnimator;
         private PlayerView _playerView;
         private StateMachine _stateMachine;
+        private IState CurrentState => _stateMachine.CurrentState;
 
         public IState IdleState { get; private set; }
         public IState WalkState { get; private set; }
@@ -50,6 +51,7 @@ namespace Farm.Player
                     Destroy(gameObject);
                 }
             }
+
             CreateSingleton();
 
             _agent = GetComponent<NavMeshAgent>();
@@ -76,8 +78,11 @@ namespace Farm.Player
 
         public void SetTask(Task task)
         {
-            Task = task;
-            ChangeState(WalkState);
+            if (CurrentState == IdleState || CurrentState == WalkState)
+            {
+                Task = task;
+                ChangeState(WalkState);
+            }
         }
     }
 }
