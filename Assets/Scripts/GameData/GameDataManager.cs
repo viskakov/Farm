@@ -1,6 +1,9 @@
 using System;
 using System.IO;
 using Newtonsoft.Json;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace GameData
@@ -75,6 +78,14 @@ namespace GameData
             }
 
             return gameData;
+        }
+
+        [MenuItem("Project Tools/Reset Game Data")]
+        private static void ResetGameData()
+        {
+            var emptyData = new GameData<int>(0, 0);
+            Save(emptyData);
+            Debug.Log("Game Data is Reset");
         }
 
         private void OnApplicationQuit()
