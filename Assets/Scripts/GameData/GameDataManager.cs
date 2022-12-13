@@ -80,6 +80,7 @@ namespace GameData
             return gameData;
         }
 
+#if UNITY_EDITOR
         [MenuItem("Project Tools/Reset Game Data")]
         private static void ResetGameData()
         {
@@ -87,6 +88,7 @@ namespace GameData
             Save(emptyData);
             Debug.Log("Game Data is Reset");
         }
+#endif
 
         private void OnApplicationQuit()
         {
