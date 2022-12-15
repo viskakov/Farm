@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -17,11 +18,14 @@ namespace Farm.UI
         [SerializeField] private Transform _parent;
 
         private List<FoodData> _foods;
+        private List<ButtonView> _items;
 
         public CellLogic SelectedCell { get; private set; }
 
         private void Awake()
         {
+            _items = new List<ButtonView>();
+
             LoadFoodData();
             CreateFoodButtons();
         }
@@ -106,6 +110,7 @@ namespace Farm.UI
                 var instance = Instantiate(_buttonPrefab, Vector3.zero, Quaternion.identity, _parent);
                 instance.name = $"{_foods[i].Name} button";
                 instance.Init(this, _foods[i]);
+                _items.Add(instance);
             }
         }
 
@@ -128,6 +133,7 @@ namespace Farm.UI
 
             ScaleIn();
             FadeIn();
+            StartCoroutine(ShowItemEffect());
         }
 
         public void Hide()
@@ -148,6 +154,23 @@ namespace Farm.UI
 
             ScaleOut();
             FadeOut();
+        }
+
+        private IEnumerator ShowItemEffect()
+        {
+            foreach (var item in _items)
+            {
+                item.transform.localScale = Vector3.zero;
+            }
+
+            foreach (var item in _items)
+            {
+                item.transform
+                    .DOScale(Vector3.one, 0.3f)
+                    .SetEase(Ease.OutBack);
+
+                yield return new WaitForSeconds(0.1f);
+            }
         }
     }
 }
