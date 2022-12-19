@@ -19,12 +19,14 @@ namespace Farm.UI
 
         private List<FoodData> _foods;
         private List<ButtonView> _items;
+        private WaitForSeconds _pause;
 
         public CellLogic SelectedCell { get; private set; }
 
         private void Awake()
         {
             _items = new List<ButtonView>();
+            _pause = new WaitForSeconds(0.1f);
 
             LoadFoodData();
             CreateFoodButtons();
@@ -165,11 +167,11 @@ namespace Farm.UI
 
             foreach (var item in _items)
             {
+                yield return _pause;
+
                 item.transform
                     .DOScale(Vector3.one, 0.3f)
                     .SetEase(Ease.OutBack);
-
-                yield return new WaitForSeconds(0.1f);
             }
         }
     }
