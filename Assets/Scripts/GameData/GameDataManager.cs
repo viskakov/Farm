@@ -45,8 +45,7 @@ namespace GameData
 
         private void Start()
         {
-            OnCarrotChange?.Invoke(0, _gameData.Carrot);
-            OnExperienceChange?.Invoke(0, _gameData.Experience);
+            FireEvents();
         }
 
         public static void AddCarrot()
@@ -54,6 +53,12 @@ namespace GameData
             var prevValue = _gameData.Carrot;
             _gameData.Carrot++;
             OnCarrotChange?.Invoke(prevValue, _gameData.Carrot);
+        }
+
+        private static void FireEvents()
+        {
+            OnCarrotChange?.Invoke(0, _gameData.Carrot);
+            OnExperienceChange?.Invoke(0, _gameData.Experience);
         }
 
         public static void AddExperience(int value)
@@ -85,9 +90,11 @@ namespace GameData
         [MenuItem("Project Tools/Reset Game Data")]
         private static void ResetGameData()
         {
-            var emptyData = new GameData<int>(0, 0);
-            Save(emptyData);
-            Debug.Log("Game Data is Reset");
+            _gameData = new GameData<int>(0, 0);
+            Save(_gameData);
+            FireEvents();
+
+            Debug.LogWarning("Game Data is Reset");
         }
 #endif
 
