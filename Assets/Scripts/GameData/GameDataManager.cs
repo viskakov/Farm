@@ -28,13 +28,14 @@ namespace GameData
 
         private static GameData<int> _gameData;
         private static string _dataPath;
+        private readonly string _fileName = "GameData.json";
 
         private void Awake()
         {
 #if UNITY_EDITOR
-            _dataPath = Application.dataPath + "/Data/GameData.json";
+            _dataPath = Path.Combine(Application.dataPath, "Data", _fileName);
 #elif UNITY_STANDALONE
-            _dataPath = Application.persistentDataPath + "/GameData.json";
+            _dataPath = Path.Combine(Application.persistentDataPath, _fileName);
 #endif
             var loadedGameData = Load<GameData<int>>();
             _gameData = loadedGameData != null
