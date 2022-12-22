@@ -50,14 +50,14 @@ namespace Farm.UI
             while (elapsedTime < duration)
             {
                 var t = elapsedTime / duration;
-                var result = Mathf.SmoothStep(startValue, endValue, t);
                 elapsedTime += Time.deltaTime;
+                var result = Mathf.SmoothStep(startValue, endValue, t);
                 action?.Invoke(result);
 
                 yield return null;
-
-                action?.Invoke(endValue);
             }
+
+            action?.Invoke(endValue);
         }
     }
 }
