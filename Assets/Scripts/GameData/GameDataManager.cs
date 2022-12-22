@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace GameData
 {
-    [Serializable]
     public class GameData<T>
     {
         public T Carrot { get; set; }
@@ -32,12 +31,8 @@ namespace GameData
 
         private void Awake()
         {
-#if UNITY_EDITOR
-            _dataPath = Path.Combine(Application.dataPath, "Data", FileName);
-#elif UNITY_STANDALONE
-            _dataPath = Path.Combine(Application.persistentDataPath, FileName);
-#endif
-            var loadedGameData = Load<GameData<int>>();
+            _dataPath = GetGameDataPath();
+            var loadedGameData = Load<GameData<int>>(_dataPath);
             _gameData = loadedGameData != null
                 ? new GameData<int>(loadedGameData.Carrot, loadedGameData.Experience)
                 : new GameData<int>(0, 0);
@@ -48,17 +43,17 @@ namespace GameData
             FireEvents();
         }
 
+        private static void FireEvents()
+        {
+            OnCarrotChange?.Invoke(0, _gameData.Carrot);
+            OnExperienceChange?.Invoke(0, _gameData.Experience);
+        }
+
         public static void AddCarrot()
         {
             var prevValue = _gameData.Carrot;
             _gameData.Carrot++;
             OnCarrotChange?.Invoke(prevValue, _gameData.Carrot);
-        }
-
-        private static void FireEvents()
-        {
-            OnCarrotChange?.Invoke(0, _gameData.Carrot);
-            OnExperienceChange?.Invoke(0, _gameData.Experience);
         }
 
         public static void AddExperience(int value)
@@ -68,22 +63,31 @@ namespace GameData
             OnExperienceChange?.Invoke(prevValue, _gameData.Experience);
         }
 
-        private static void Save<T>(GameData<T> gameData)
+        private static void Save<T>(GameData<T> gameData, string dataPath)
         {
             var dataJson = JsonConvert.SerializeObject(gameData);
-            File.WriteAllText(_dataPath, dataJson);
+            File.WriteAllText(dataPath, dataJson);
         }
 
-        private static T Load<T>()
+        private static T Load<T>(string dataPath)
         {
             T gameData = default;
-            if (File.Exists(_dataPath))
+            if (File.Exists(dataPath))
             {
-                var dataJson = File.ReadAllText(_dataPath);
+                var dataJson = File.ReadAllText(dataPath);
                 gameData = JsonConvert.DeserializeObject<T>(dataJson);
             }
 
             return gameData;
+        }
+
+        private string GetGameDataPath()
+        {
+#if UNITY_EDITOR
+            return Path.Combine(Application.dataPath, "Data", FileName);
+#elif UNITY_STANDALONE
+            return Path.Combine(Application.persistentDataPath, FileName);
+#endif
         }
 
 #if UNITY_EDITOR
@@ -91,7 +95,7 @@ namespace GameData
         private static void ResetGameData()
         {
             _gameData = new GameData<int>(0, 0);
-            Save(_gameData);
+            Save(_gameData, _dataPath);
             FireEvents();
 
             Debug.LogWarning("Game Data is Reset");
@@ -100,7 +104,7 @@ namespace GameData
 
         private void OnApplicationQuit()
         {
-            Save(_gameData);
+            Save(_gameData, _dataPath);
         }
     }
 }
