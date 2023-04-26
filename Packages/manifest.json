@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "com.unity.2d.sprite": "1.0.0",
-    "com.unity.2d.spriteshape": "7.0.6",
+    "com.unity.2d.spriteshape": "7.0.7",
     "com.unity.feature.development": "1.0.1",
-    "com.unity.ide.rider": "3.0.17",
+    "com.unity.ide.rider": "3.0.18",
     "com.unity.test-framework": "1.1.33",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.6.4",
