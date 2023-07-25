@@ -11,6 +11,9 @@ namespace Farm.UI
         [SerializeField] private TextMeshProUGUI _carrotLabel;
         [SerializeField] private TextMeshProUGUI _expLabel;
 
+        private float _minDuration = 0.33f;
+        private float _maxDuration = 0.66f;
+
         private void OnEnable()
         {
             GameDataManager.OnCarrotChange += OnCarrotChange;
@@ -45,11 +48,13 @@ namespace Farm.UI
 
         private IEnumerator GradualChangeValue(float startValue, float endValue, Action<float> action)
         {
+            var diff = Mathf.Abs(endValue - startValue);
             var elapsedTime = 0f;
-            var duration = 0.3f;
-            while (elapsedTime < duration)
+            var dynamicDuration = Mathf.Lerp(_minDuration, _maxDuration, 1f / Mathf.Max(diff, 1f));
+
+            while (elapsedTime < dynamicDuration)
             {
-                var t = elapsedTime / duration;
+                var t = elapsedTime / dynamicDuration;
                 elapsedTime += Time.deltaTime;
                 var result = Mathf.SmoothStep(startValue, endValue, t);
                 action?.Invoke(result);
