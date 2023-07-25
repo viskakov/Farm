@@ -7,7 +7,7 @@ namespace Farm.Editor
 {
     public static class Screenshot
     {
-        [MenuItem("My Tools/Take Screenshot")]
+        [MenuItem("Project Tools/Take Screenshot")]
         public static void TakeScreenshot()
         {
             var path = Path.Combine(Application.dataPath, "Screenshots");
