@@ -46,7 +46,7 @@ namespace Farm.UI
             _expLabel.SetText($"Exp: {value:0}");
         }
 
-        private IEnumerator GradualChangeValue(float startValue, float endValue, Action<float> action)
+        private IEnumerator GradualChangeValue(float startValue, float endValue, Action<float> callback)
         {
             var diff = Mathf.Abs(endValue - startValue);
             var elapsedTime = 0f;
@@ -57,12 +57,12 @@ namespace Farm.UI
                 var t = elapsedTime / dynamicDuration;
                 elapsedTime += Time.deltaTime;
                 var result = Mathf.SmoothStep(startValue, endValue, t);
-                action?.Invoke(result);
+                callback?.Invoke(result);
 
                 yield return null;
             }
 
-            action?.Invoke(endValue);
+            callback?.Invoke(endValue);
         }
     }
 }
