@@ -1,7 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DG.Tweening;
 using Farm.Commands;
 using Farm.Food;
@@ -19,14 +19,17 @@ namespace Farm.UI
 
         private List<FoodData> _foods;
         private List<ButtonView> _items;
-        private WaitForSeconds _pause;
+        private readonly float _pause = 0.1f;
+        private readonly float _scaleInDuration = 0.3f;
+        private readonly float _scaleOutDuration = 0.2f;
+        private readonly float _fadeInDuration = 0.3f;
+        private readonly float _fadeOutDuration = 0.2f;
 
         public CellLogic SelectedCell { get; private set; }
 
         private void Awake()
         {
             _items = new List<ButtonView>();
-            _pause = new WaitForSeconds(0.1f);
 
             LoadFoodData();
             CreateFoodButtons();
@@ -76,66 +79,48 @@ namespace Farm.UI
 
             if (cell.CurrentFood.IsRipe)
             {
-                switch (cell.CurrentFood.FoodKind)
+                ICommand command = cell.CurrentFood.FoodKind switch
                 {
-                    case FoodKind.Carrot:
-                    {
-                        var pickupCommand = new PickupCommand(cell);
-                        pickupCommand.Execute();
-                        break;
-                    }
-                    case FoodKind.Grass:
-                    {
-                        var cutDownCommand = new CutDownCommand(cell);
-                        cutDownCommand.Execute();
-                        break;
-                    }
-                    case FoodKind.Tree:
-                    {
-                        var doNothingCommand = new DoNothingCommand();
-                        doNothingCommand.Execute();
-                        break;
-                    }
-                    default:
-                    {
-                        Debug.Log("Undefined");
-                        throw new ArgumentOutOfRangeException();
-                    }
-                }
+                    FoodKind.Carrot => new PickupCommand(cell),
+                    FoodKind.Grass => new CutDownCommand(cell),
+                    FoodKind.Tree => new DoNothingCommand(),
+                    _ => throw new ArgumentOutOfRangeException(),
+                };
+                command.Execute();
             }
         }
 
         private void CreateFoodButtons()
         {
-            for (var i = 0; i < _foods.Count; i++)
+            _items = _foods.Select(food =>
             {
                 var instance = Instantiate(_buttonPrefab, Vector3.zero, Quaternion.identity, _parent);
-                instance.name = $"{_foods[i].Name} button";
-                instance.Init(this, _foods[i]);
-                _items.Add(instance);
-            }
+                instance.name = $"{food.Name} button";
+                instance.Init(this, food);
+                return instance;
+            }).ToList();
         }
 
-        private void Show()
+        private async void Show()
         {
             void ScaleIn()
             {
                 transform.localScale = Vector3.zero;
                 transform
-                    .DOScale(Vector3.one, 0.3f)
+                    .DOScale(Vector3.one, _scaleInDuration)
                     .SetEase(Ease.OutBack);
             }
 
             void FadeIn()
             {
                 _canvasGroup
-                    .DOFade(1f, 0.3f)
+                    .DOFade(1f, _fadeInDuration)
                     .SetEase(Ease.OutQuad);
             }
 
             ScaleIn();
             FadeIn();
-            StartCoroutine(ShowItemEffect());
+            await ShowItemEffect();
         }
 
         public void Hide()
@@ -143,14 +128,14 @@ namespace Farm.UI
             void ScaleOut()
             {
                 transform
-                    .DOScale(Vector3.zero, 0.2f)
+                    .DOScale(Vector3.zero, _scaleOutDuration)
                     .SetEase(Ease.OutQuad);
             }
 
             void FadeOut()
             {
                 _canvasGroup
-                    .DOFade(0f, 0.2f)
+                    .DOFade(0f, _fadeOutDuration)
                     .SetEase(Ease.OutQuad);
             }
 
@@ -158,7 +143,7 @@ namespace Farm.UI
             FadeOut();
         }
 
-        private IEnumerator ShowItemEffect()
+        private async Task ShowItemEffect()
         {
             foreach (var item in _items)
             {
@@ -167,10 +152,10 @@ namespace Farm.UI
 
             foreach (var item in _items)
             {
-                yield return _pause;
+                await Task.Delay(TimeSpan.FromSeconds(_pause));
 
                 item.transform
-                    .DOScale(Vector3.one, 0.3f)
+                    .DOScale(Vector3.one, _scaleInDuration)
                     .SetEase(Ease.OutBack);
             }
         }
