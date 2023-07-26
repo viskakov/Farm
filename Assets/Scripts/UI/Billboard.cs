@@ -13,7 +13,10 @@ namespace Farm.UI
 
         private void Update()
         {
-            transform.forward = _mainCamera.transform.forward;
+            if (Time.frameCount % 2 == 0)
+            {
+                transform.forward = _mainCamera.transform.forward;
+            }
         }
     }
 }
