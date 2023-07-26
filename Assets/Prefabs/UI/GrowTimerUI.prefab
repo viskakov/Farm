@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 54292008769223344}
   - component: {fileID: 3812691016623913189}
   - component: {fileID: 6148806515218293448}
+  - component: {fileID: 2428663910535234644}
   m_Layer: 5
   m_Name: GrowTimerUI
   m_TagString: Untagged
@@ -406,3 +407,15 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
+--- !u!114 &2428663910535234644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7462753558894395413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9714892d79d844919575711d8524efb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

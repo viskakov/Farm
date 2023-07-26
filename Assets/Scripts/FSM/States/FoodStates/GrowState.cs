@@ -25,8 +25,7 @@ namespace Farm.FSM.States.FoodStates
         public void Enter()
         {
             _timer = _foodData.GrowTime;
-            _growTimerUI.SetDuration(_timer);
-            _growTimerUI.Show();
+            _growTimerUI.Init(_timer);
             _foodRender.transform.localScale = Vector3.zero;
             RandomModelRotation();
         }
@@ -47,7 +46,6 @@ namespace Farm.FSM.States.FoodStates
 
         public void Exit()
         {
-            _growTimerUI.Hide();
         }
 
         private void RandomModelRotation()
